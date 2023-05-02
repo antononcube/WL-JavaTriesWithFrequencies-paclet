@@ -80,6 +80,7 @@
   Anton Antonov
   Windermere, FL
   January 2017
+  May 2023 (update)
 *)
 
 (* This file was created with the Mathematica plug-in for IntelliJ IDEA. *)
@@ -171,7 +172,6 @@ JavaTrieClassify[jTr_,record_] is the same as JavaTrieClassify[tr_,record_,\"Dec
 
 Begin["`Private`"];
 
-
 Needs["JLink`"];
 
 Clear[JavaTrieClone];
@@ -236,12 +236,13 @@ JavaTrieInstall[path_String, opts : OptionsPattern[]] :=
       JLink`AddToClassPath[path];
       If[ Length[{opts}] > 0,
         JLink`ReinstallJava[opts],
+        (*ELSE*)
         JLink`ReinstallJava[JLink`JVMArguments -> "-Xmx2g"]
       ];
       JLink`LoadJavaClass["java.util.Collections"];
       JLink`LoadJavaClass["java.util.Arrays"];
-      JLink`LoadJavaClass["Trie"];
-      JLink`LoadJavaClass["TrieFunctions"];
+      JLink`LoadJavaClass["main.java.ml.TriesWithFrequencies.Trie"];
+      JLink`LoadJavaClass["main.java.ml.TriesWithFrequencies.TrieFunctions"];
     ];
 
 Clear[JavaTrieLeafProbabilities, JavaTrieLeafProbabilitiesSimple];
@@ -251,9 +252,9 @@ Options[JavaTrieLeafProbabilities] = { "Normalized" -> False, "ChopValue" -> Aut
 JavaTrieLeafProbabilities[jTr_?JavaObjectQ, opts : OptionsPattern[]] :=
     Block[{rootVal, chopVal, res},
       res =
-          If[ TrueQ[ OptionValue["Normalized"] ],
+          If[ TrueQ[ OptionValue[JavaTrieLeafProbabilities, "Normalized"] ],
             rootVal = "value" /. JavaTrieToJSON[jTr, 0];
-            JavaTrieLeafProbabilitiesSimple[jTr] /. ("value" -> x_?NumberQ) :> ("value" -> x / rootVal),
+            Map[ReplacePart[#, "value" -> #value / rootVal]&,  JavaTrieLeafProbabilitiesSimple[jTr]],
             (*ELSE*)
             JavaTrieLeafProbabilitiesSimple[jTr]
           ];
@@ -302,6 +303,9 @@ JavaTrieToJSON[jTr_?JavaObjectQ, maxLevel_Integer ] :=
     ImportString[FromCharacterCode@ToCharacterCode[jTr@toJSON[maxLevel], "UTF-8"], "RawJSON"];
 
 Clear[JavaTrieRetrieve];
+
+JavaTrieRetrieve[jTr_?JavaObjectQ, {}] := jTr;
+
 JavaTrieRetrieve[jTr_?JavaObjectQ, sword : {_String ..}] :=
     TrieFunctions`retrieve[jTr, Arrays`asList[MakeJavaObject[sword]]];
 
@@ -498,8 +502,10 @@ JavaTrieClassify[tr_, record_, "TopProbabilities" -> n_Integer, opts : OptionsPa
 JavaTrieClassify[tr_, record_, "Probabilities", opts : OptionsPattern[]] :=
     Block[{res, dval = OptionValue[JavaTrieClassify, "Default"]},
       res = JavaTrieLeafProbabilities[JavaTrieRetrieve[tr, record], "Normalized" -> True];
-      If[Length[res] == 0, <|dval -> 0|>,
-        res = AssociationThread[res[[All, 1, 2]] -> res[[All, 2, 2]]];
+      If[Length[res] == 0,
+        <|dval -> 0|>,
+        (* ELSE *)
+        res = Map[("key" -> "value") /. # &, res];
         res = ReverseSort[Association[Rule @@@ res]]
       ]
     ];
