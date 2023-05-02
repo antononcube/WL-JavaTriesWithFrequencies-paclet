@@ -1,2 +1,2 @@
-# WL-JavaTriesWithFrequencies-paclet
-Wolfram Language (aka Mathematica) paclet for Tries with Frequencies implemented in Java.
+# WL-FunctionalParsers-paclet
+This Wolfram Language paclet provides an implementation of a system of functional parsers.
