@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18035,        502]
-NotebookOptionsPosition[     12176,        376]
-NotebookOutlinePosition[     12975,        402]
-CellTagsIndexPosition[     12896,        397]
+NotebookDataLength[     40301,       1130]
+NotebookOptionsPosition[     33500,        985]
+NotebookOutlinePosition[     34338,       1012]
+CellTagsIndexPosition[     34258,       1007]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -44,7 +44,12 @@ Cell[TextData[{
  CellChangeTimes->{3.891967013244371*^9},
  CellID->1374225839,ExpressionUUID->"55a61786-c67f-4faa-b515-22fc96ba3e7b"],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+Any strings can be used, but since the Trie data structure -- aka Prefix Tree \
+-- comes from word collection search workflows the terms \"words\" and \
+\"characters\" are used.\
+\>", "Notes",
+ CellChangeTimes->{{3.892030965512356*^9, 3.892031087961975*^9}},
  CellID->427052588,ExpressionUUID->"c73ab7d0-bb1c-4b54-84f1-5d3484d6afab"]
 }, Open  ]],
 
@@ -108,9 +113,11 @@ Cell[TextData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  TagBox[
-   FrameBox["\<\"XXXX\"\>"],
-   "FunctionPlaceholder"]], "InlineSeeAlsoFunction",
+  ButtonBox["JavaTrieCreateBySplit",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieCreateBySplit"]]\
+, "InlineSeeAlsoFunction",
   TaggingRules->{"PageType" -> "Function"},ExpressionUUID->
   "cf3c7cca-b743-42fa-8e94-5d40dec62b83"],
  Cell[BoxData[
@@ -119,9 +126,11 @@ Cell[TextData[{
    " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
     "07d58830-3592-4b5f-907f-07d2cf3917c5"], 
    DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
-     FrontEndObject[
-      LinkObject["hmt58_shm", 537, 6]], 17], $CellContext`cellobj$$ = 
-    CellObject[7121]}, 
+    "bdae4e3a-95bc-430c-8d22-9ea7b18bc951", 
+     "6c895071-f1a2-450a-9242-e8e65dc9aafc"], $CellContext`cellobj$$ = 
+    CellObject[
+    "a12b16b4-1060-4802-9509-dfc3db2cbcc0", 
+     "9cbad5b8-2a62-4e33-8d44-b6853746d965"]}, 
     TemplateBox[{
       GraphicsBox[{{
          Thickness[0.06], 
@@ -146,6 +155,7 @@ Cell[TextData[{
   "InlineListingAddButton",ExpressionUUID->
   "a12b16b4-1060-4802-9509-dfc3db2cbcc0"]
 }], "SeeAlso",
+ CellChangeTimes->{{3.892030936430739*^9, 3.892030948143324*^9}},
  CellID->403265647,ExpressionUUID->"e6f5af5c-754f-4c5c-801f-b5bfc560dd7a"]
 }, Open  ]],
 
@@ -183,6 +193,8 @@ Cell[BoxData[
  CellID->422506952,ExpressionUUID->"f041e7e5-0193-4e07-ad14-fe50c556e3a5"]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  InterpretationBox[GridBox[{
     {
@@ -196,6 +208,601 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->1493405282,ExpressionUUID->"9f763d9f-400b-4f39-9377-4a7af381f640"],
+
+Cell["Connect to Java's implementation: ", "ExampleText",
+ CellChangeTimes->{{3.892030547321212*^9, 3.892030581477496*^9}, {
+  3.8920311819639482`*^9, 3.892031184978036*^9}},
+ CellID->1433688672,ExpressionUUID->"da3a4248-41ae-475f-92be-3dc5e6a72d66"],
+
+Cell[BoxData[
+ RowBox[{"JavaTrieInstall", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+    "$HomeDirectory", ",", "\"\<Downloads\>\"", ",", 
+     "\"\<Java-TriesWithFrequencies.jar\>\""}], "}"}], "]"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.8920305092766953`*^9, 3.8920305216270437`*^9}, 
+   3.892031118042994*^9},
+ CellLabel->"In[5]:=",
+ CellID->1555321691,ExpressionUUID->"369a93d0-af57-4b35-803c-ff95da24a5bd"],
+
+Cell["Here is a list of words:", "ExampleText",
+ TaggingRules->{},
+ CellChangeTimes->{{3.891967299663167*^9, 3.89196730301511*^9}},
+ CellID->1305895303,ExpressionUUID->"b854238f-a897-458e-bcab-df7f9eeb337f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"words", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<war\>\"", ",", " ", "\"\<warm\>\"", ",", " ", "\"\<warn\>\"", ",", 
+     " ", "\"\<wars\>\"", ",", " ", "\"\<work\>\"", ",", " ", "\"\<word\>\"", 
+     ",", " ", "\"\<worth\>\"", ",", " ", "\"\<car\>\"", ",", " ", 
+     "\"\<cars\>\"", ",", " ", "\"\<caress\>\"", ",", " ", "\"\<carbs\>\""}], 
+    "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.89203113981188*^9, 3.89203113981689*^9}},
+ CellLabel->"In[9]:=",
+ CellID->363131318,ExpressionUUID->"5a20ebdf-5eb8-4dc4-a14a-c77873675a56"],
+
+Cell["Make and visualize a Java trie:", "ExampleText",
+ TaggingRules->{},
+ CellChangeTimes->{{3.8919672879412947`*^9, 3.891967311879966*^9}, {
+  3.892031164325035*^9, 3.8920311687437067`*^9}},
+ CellID->465571565,ExpressionUUID->"97a728c9-976c-4be4-94c6-bce34ae53de3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"JavaTrieForm", "@", 
+  RowBox[{"JavaTrieCreate", "@", 
+   RowBox[{"Map", "[", 
+    RowBox[{"Characters", ",", "words"}], "]"}]}]}]], "Input",
+ TaggingRules->{},
+ CellChangeTimes->{{3.8919673086324387`*^9, 3.891967323167713*^9}, {
+  3.8919673860889187`*^9, 3.8919673884831123`*^9}, {3.892031146278789*^9, 
+  3.8920311568753138`*^9}, {3.8920312218363132`*^9, 3.892031228786833*^9}},
+ CellLabel->"In[11]:=",
+ CellID->844272446,ExpressionUUID->"1902c0a7-9ec9-41f9-83c3-f249d86dee53"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox[{
+    {Hue[0, 1, 0.5], Opacity[1], Arrowheads[0.018073156682027646`], 
+     ArrowBox[{
+      DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+       "VertexID$2", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+       "VertexID$3", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+       "VertexID$4", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+       "VertexID$12", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+       "VertexID$13", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+       "VertexID$5", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+       "VertexID$6", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+       "VertexID$7", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+       "VertexID$8", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+       "VertexID$9", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+       "VertexID$10", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$10", Automatic, Center], DynamicLocation[
+       "VertexID$11", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$12", Automatic, Center], DynamicLocation[
+       "VertexID$14", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$13", Automatic, Center], DynamicLocation[
+       "VertexID$18", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$14", Automatic, Center], DynamicLocation[
+       "VertexID$15", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$14", Automatic, Center], DynamicLocation[
+       "VertexID$16", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$14", Automatic, Center], DynamicLocation[
+       "VertexID$17", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$18", Automatic, Center], DynamicLocation[
+       "VertexID$19", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$18", Automatic, Center], DynamicLocation[
+       "VertexID$20", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$18", Automatic, Center], DynamicLocation[
+       "VertexID$21", Automatic, Center]}], 
+     ArrowBox[{
+      DynamicLocation["VertexID$20", Automatic, Center], DynamicLocation[
+       "VertexID$22", Automatic, Center]}]}, 
+    {Hue[0.66, 1, 0.7], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"\"\>", ",", "11.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {0., 6.}],
+         "DynamicName",
+         BoxID -> "VertexID$1"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"\"", ",", "11.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"0", ",", "0"}], "}"}]}], "}"}]],
+       Annotation[#, {{"", 11.}, {0, 0}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$1"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"c\"\>", ",", "4.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-3., 5.}],
+         "DynamicName",
+         BoxID -> "VertexID$2"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"c\"", ",", "4.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"1", ",", "0"}], "}"}]}], "}"}]],
+       Annotation[#, {{"c", 4.}, {1, 0}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$2"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"w\"\>", ",", "7.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {0., 5.}],
+         "DynamicName",
+         BoxID -> "VertexID$3"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"w\"", ",", "7.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"1", ",", "1"}], "}"}]}], "}"}]],
+       Annotation[#, {{"w", 7.}, {1, 1}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$3"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"a\"\>", ",", "4.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-3., 4.}],
+         "DynamicName",
+         BoxID -> "VertexID$4"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"a\"", ",", "4.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"2", ",", "2"}], "}"}]}], "}"}]],
+       Annotation[#, {{"a", 4.}, {2, 2}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$4"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"r\"\>", ",", "4.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-3., 3.}],
+         "DynamicName",
+         BoxID -> "VertexID$5"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"r\"", ",", "4.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"3", ",", "3"}], "}"}]}], "}"}]],
+       Annotation[#, {{"r", 4.}, {3, 3}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$5"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"b\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-4., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$6"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"b\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "4"}], "}"}]}], "}"}]],
+       Annotation[#, {{"b", 1.}, {4, 4}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$6"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"s\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-3., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$7"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"s\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "5"}], "}"}]}], "}"}]],
+       Annotation[#, {{"s", 1.}, {4, 5}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$7"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"e\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-2., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$8"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"e\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "6"}], "}"}]}], "}"}]],
+       Annotation[#, {{"e", 1.}, {4, 6}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$8"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"s\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-4., 1.}],
+         "DynamicName",
+         BoxID -> "VertexID$9"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"s\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"5", ",", "7"}], "}"}]}], "}"}]],
+       Annotation[#, {{"s", 1.}, {5, 7}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$9"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"s\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-2., 1.}],
+         "DynamicName",
+         BoxID -> "VertexID$10"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"s\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"5", ",", "8"}], "}"}]}], "}"}]],
+       Annotation[#, {{"s", 1.}, {5, 8}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$10"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"s\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-2., 0.}],
+         "DynamicName",
+         BoxID -> "VertexID$11"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"s\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"6", ",", "9"}], "}"}]}], "}"}]],
+       Annotation[#, {{"s", 1.}, {6, 9}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$11"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"a\"\>", ",", "4.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {0., 4.}],
+         "DynamicName",
+         BoxID -> "VertexID$12"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"a\"", ",", "4.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"2", ",", "10"}], "}"}]}], "}"}]],
+       Annotation[#, {{"a", 4.}, {2, 10}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$12"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"o\"\>", ",", "3.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {3., 4.}],
+         "DynamicName",
+         BoxID -> "VertexID$13"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"o\"", ",", "3.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"2", ",", "11"}], "}"}]}], "}"}]],
+       Annotation[#, {{"o", 3.}, {2, 11}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$13"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"r\"\>", ",", "4.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {0., 3.}],
+         "DynamicName",
+         BoxID -> "VertexID$14"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"r\"", ",", "4.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"3", ",", "12"}], "}"}]}], "}"}]],
+       Annotation[#, {{"r", 4.}, {3, 12}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$14"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"s\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {-1., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$15"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"s\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "13"}], "}"}]}], "}"}]],
+       Annotation[#, {{"s", 1.}, {4, 13}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$15"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"m\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {0., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$16"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"m\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "14"}], "}"}]}], "}"}]],
+       Annotation[#, {{"m", 1.}, {4, 14}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$16"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"n\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {1., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$17"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"n\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "15"}], "}"}]}], "}"}]],
+       Annotation[#, {{"n", 1.}, {4, 15}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$17"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"r\"\>", ",", "3.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {3., 3.}],
+         "DynamicName",
+         BoxID -> "VertexID$18"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"r\"", ",", "3.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"3", ",", "16"}], "}"}]}], "}"}]],
+       Annotation[#, {{"r", 3.}, {3, 16}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$18"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"d\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {2., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$19"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"d\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "17"}], "}"}]}], "}"}]],
+       Annotation[#, {{"d", 1.}, {4, 17}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$19"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"t\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {4., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$20"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"t\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "18"}], "}"}]}], "}"}]],
+       Annotation[#, {{"t", 1.}, {4, 18}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$20"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"k\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {3., 2.}],
+         "DynamicName",
+         BoxID -> "VertexID$21"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"k\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"4", ",", "19"}], "}"}]}], "}"}]],
+       Annotation[#, {{"k", 1.}, {4, 19}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$21"], 
+     TagBox[
+      TagBox[
+       TooltipBox[
+        TagBox[InsetBox[
+          FrameBox[
+           RowBox[{"{", 
+            RowBox[{"\<\"h\"\>", ",", "1.`"}], "}"}],
+           Background->RGBColor[1, 1, 0.8],
+           FrameStyle->RGBColor[0.94, 0.85, 0.36],
+           StripOnInput->False], {4., 1.}],
+         "DynamicName",
+         BoxID -> "VertexID$22"],
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{"{", 
+              RowBox[{"\"h\"", ",", "1.`"}], "}"}], ",", 
+            RowBox[{"{", 
+              RowBox[{"5", ",", "20"}], "}"}]}], "}"}]],
+       Annotation[#, {{"h", 1.}, {5, 20}}, "Tooltip"]& ],
+      "DynamicName",
+      BoxID -> "VertexLabelID$22"]}}],
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Output",
+ CellChangeTimes->{3.892031157365531*^9, 3.892031229339157*^9},
+ CellLabel->"Out[11]=",
+ CellID->2077983353,ExpressionUUID->"7f29289f-745c-4a8f-a0b4-6b70e2dcd91e"]
+}, Open  ]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -295,7 +902,7 @@ Cell["Metadata", "MetadataSection",
 
 Cell[TextData[{
  "New in: ",
- Cell["XX", "HistoryData",
+ Cell["1.0.0", "HistoryData",
   CellTags->"New",ExpressionUUID->"6d2fe436-3e59-4bfd-86ec-3f62f426430e"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
@@ -305,6 +912,8 @@ Cell[TextData[{
   CellTags->"Obsolete",ExpressionUUID->
   "5261e98a-36b6-4be1-a69d-ca017e74d4e7"]
 }], "History",
+ CellChangeTimes->{{3.864923683926749*^9, 3.864923685610183*^9}, {
+  3.89203119618646*^9, 3.892031197153274*^9}},
  CellID->92695805,ExpressionUUID->"55f11db7-6ce4-49f9-9676-c01ff4f76150"],
 
 Cell[CellGroupData[{
@@ -374,10 +983,11 @@ Cell[BoxData[""], "Template",
 }, Closed]]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{5, Automatic}, {Automatic, 0}},
+WindowSize->{1193, 1007},
+WindowMargins->{{Automatic, 1118}, {Automatic, 66}},
 TaggingRules-><|"Paclet" -> "AntonAntonov/JavaTriesWithFrequencies"|>,
 CellContext->"Global`",
+Magnification:>1.25 Inherited,
 FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
   CharacterEncoding -> "UTF-8"],
@@ -389,124 +999,140 @@ ExpressionUUID->"bdae4e3a-95bc-430c-8d22-9ea7b18bc951"
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[6324, 201, 488, 13, 58, "ExtendedExamplesSection",ExpressionUUID->"fd5a2892-8c49-4d91-afa5-42d417f7de39",
+  Cell[27531, 808, 488, 13, 72, "ExtendedExamplesSection",ExpressionUUID->"fd5a2892-8c49-4d91-afa5-42d417f7de39",
    CellTags->"ExtendedExamples",
    CellID->2021192085]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 12702, 390}
+ {"ExtendedExamples", 34063, 1000}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 112, 1, 74, "ObjectName",ExpressionUUID->"a7ee194f-1f89-42bb-b819-b6217c32b531",
+Cell[580, 22, 112, 1, 92, "ObjectName",ExpressionUUID->"a7ee194f-1f89-42bb-b819-b6217c32b531",
  CellID->1638644881],
-Cell[695, 25, 723, 19, 80, "Usage",ExpressionUUID->"55a61786-c67f-4faa-b515-22fc96ba3e7b",
+Cell[695, 25, 723, 19, 100, "Usage",ExpressionUUID->"55a61786-c67f-4faa-b515-22fc96ba3e7b",
  CellID->1374225839],
-Cell[1421, 46, 96, 1, 27, "Notes",ExpressionUUID->"c73ab7d0-bb1c-4b54-84f1-5d3484d6afab",
+Cell[1421, 46, 343, 6, 56, "Notes",ExpressionUUID->"c73ab7d0-bb1c-4b54-84f1-5d3484d6afab",
  CellID->427052588]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1554, 52, 435, 12, 41, "TechNotesSection",ExpressionUUID->"1f54ac73-c074-40a4-9b8e-363cd9f29b5d",
+Cell[1801, 57, 435, 12, 51, "TechNotesSection",ExpressionUUID->"1f54ac73-c074-40a4-9b8e-363cd9f29b5d",
  CellID->582498242],
-Cell[1992, 66, 101, 1, 19, "Tutorials",ExpressionUUID->"b623eb46-3e43-403d-a0cc-5432d51c62fb",
+Cell[2239, 71, 101, 1, 24, "Tutorials",ExpressionUUID->"b623eb46-3e43-403d-a0cc-5432d51c62fb",
  CellID->1817490268]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2130, 72, 472, 13, 40, "RelatedLinksSection",ExpressionUUID->"a240a04c-02b3-4f40-8a08-4474d5490936",
+Cell[2377, 77, 472, 13, 50, "RelatedLinksSection",ExpressionUUID->"a240a04c-02b3-4f40-8a08-4474d5490936",
  CellID->751539348],
-Cell[2605, 87, 104, 1, 19, "RelatedLinks",ExpressionUUID->"da86b449-2b83-416f-a503-8c9489dea58d",
+Cell[2852, 92, 104, 1, 24, "RelatedLinks",ExpressionUUID->"da86b449-2b83-416f-a503-8c9489dea58d",
  CellID->1770493829]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2746, 93, 459, 13, 40, "SeeAlsoSection",ExpressionUUID->"08236afd-054a-4660-8da7-24d1744a4d21",
+Cell[2993, 98, 459, 13, 50, "SeeAlsoSection",ExpressionUUID->"08236afd-054a-4660-8da7-24d1744a4d21",
  CellID->1156371171],
-Cell[3208, 108, 1543, 40, 26, "SeeAlso",ExpressionUUID->"e6f5af5c-754f-4c5c-801f-b5bfc560dd7a",
+Cell[3455, 113, 1809, 45, 30, "SeeAlso",ExpressionUUID->"e6f5af5c-754f-4c5c-801f-b5bfc560dd7a",
  CellID->403265647]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4788, 153, 183, 2, 40, "MoreAboutSection",ExpressionUUID->"476f97c0-fefa-44fa-966f-12f92ed2f51e",
+Cell[5301, 163, 183, 2, 50, "MoreAboutSection",ExpressionUUID->"476f97c0-fefa-44fa-966f-12f92ed2f51e",
  CellID->227339197],
-Cell[4974, 157, 100, 1, 19, "MoreAbout",ExpressionUUID->"552d1520-40c4-4df4-8f13-6be827d6ec1a",
+Cell[5487, 167, 100, 1, 24, "MoreAbout",ExpressionUUID->"552d1520-40c4-4df4-8f13-6be827d6ec1a",
  CellID->516475966]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5111, 163, 530, 14, 70, "ExamplesInitializationSection",ExpressionUUID->"95e760dc-e231-46a2-9c8d-0454f9b78025",
+Cell[5624, 173, 530, 14, 87, "ExamplesInitializationSection",ExpressionUUID->"95e760dc-e231-46a2-9c8d-0454f9b78025",
  CellID->282659388],
-Cell[5644, 179, 197, 3, 47, "ExampleInitialization",ExpressionUUID->"f041e7e5-0193-4e07-ad14-fe50c556e3a5",
+Cell[6157, 189, 197, 3, 57, "ExampleInitialization",ExpressionUUID->"f041e7e5-0193-4e07-ad14-fe50c556e3a5",
  CellID->422506952]
 }, Open  ]],
-Cell[5856, 185, 443, 12, 73, "PrimaryExamplesSection",ExpressionUUID->"9f763d9f-400b-4f39-9377-4a7af381f640",
- CellID->1493405282],
 Cell[CellGroupData[{
-Cell[6324, 201, 488, 13, 58, "ExtendedExamplesSection",ExpressionUUID->"fd5a2892-8c49-4d91-afa5-42d417f7de39",
+Cell[6391, 197, 443, 12, 90, "PrimaryExamplesSection",ExpressionUUID->"9f763d9f-400b-4f39-9377-4a7af381f640",
+ CellID->1493405282],
+Cell[6837, 211, 250, 3, 30, "ExampleText",ExpressionUUID->"da3a4248-41ae-475f-92be-3dc5e6a72d66",
+ CellID->1433688672],
+Cell[7090, 216, 439, 11, 91, "Input",ExpressionUUID->"369a93d0-af57-4b35-803c-ff95da24a5bd",
+ CellID->1555321691],
+Cell[7532, 229, 207, 3, 30, "ExampleText",ExpressionUUID->"b854238f-a897-458e-bcab-df7f9eeb337f",
+ CellID->1305895303],
+Cell[7742, 234, 583, 12, 58, "Input",ExpressionUUID->"5a20ebdf-5eb8-4dc4-a14a-c77873675a56",
+ CellID->363131318],
+Cell[8328, 248, 267, 4, 30, "ExampleText",ExpressionUUID->"97a728c9-976c-4be4-94c6-bce34ae53de3",
+ CellID->465571565],
+Cell[CellGroupData[{
+Cell[8620, 256, 503, 10, 33, "Input",ExpressionUUID->"1902c0a7-9ec9-41f9-83c3-f249d86dee53",
+ CellID->844272446],
+Cell[9126, 268, 18356, 534, 235, "Output",ExpressionUUID->"7f29289f-745c-4a8f-a0b4-6b70e2dcd91e",
+ CellID->2077983353]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27531, 808, 488, 13, 72, "ExtendedExamplesSection",ExpressionUUID->"fd5a2892-8c49-4d91-afa5-42d417f7de39",
  CellTags->"ExtendedExamples",
  CellID->2021192085],
-Cell[6815, 216, 242, 5, 35, "ExampleSection",ExpressionUUID->"cf4c62a6-f785-4913-a590-c3e2397db118",
+Cell[28022, 823, 242, 5, 43, "ExampleSection",ExpressionUUID->"cf4c62a6-f785-4913-a590-c3e2397db118",
  CellID->1279044349],
-Cell[7060, 223, 264, 5, 23, "ExampleSection",ExpressionUUID->"a2be87df-6ae8-4471-86ee-c1c04e93cd8c",
+Cell[28267, 830, 264, 5, 27, "ExampleSection",ExpressionUUID->"a2be87df-6ae8-4471-86ee-c1c04e93cd8c",
  CellID->587067173],
 Cell[CellGroupData[{
-Cell[7349, 232, 244, 5, 23, "ExampleSection",ExpressionUUID->"33ef8159-23c8-4251-b84d-0473d8c24745",
+Cell[28556, 839, 244, 5, 27, "ExampleSection",ExpressionUUID->"33ef8159-23c8-4251-b84d-0473d8c24745",
  CellID->1298102293],
-Cell[7596, 239, 246, 5, 26, "ExampleSubsection",ExpressionUUID->"b8c09da3-1470-4a83-8c2e-a0917c2f79d9",
+Cell[28803, 846, 246, 5, 32, "ExampleSubsection",ExpressionUUID->"b8c09da3-1470-4a83-8c2e-a0917c2f79d9",
  CellID->918868578],
-Cell[7845, 246, 246, 5, 22, "ExampleSubsection",ExpressionUUID->"cc7ae50d-e6d5-4ded-a932-da2e636daedb",
+Cell[29052, 853, 246, 5, 26, "ExampleSubsection",ExpressionUUID->"cc7ae50d-e6d5-4ded-a932-da2e636daedb",
  CellID->869284869]
 }, Open  ]],
-Cell[8106, 254, 248, 5, 35, "ExampleSection",ExpressionUUID->"de68e3b8-d7c3-4908-b3e4-23d72330489b",
+Cell[29313, 861, 248, 5, 43, "ExampleSection",ExpressionUUID->"de68e3b8-d7c3-4908-b3e4-23d72330489b",
  CellID->739542742],
-Cell[8357, 261, 259, 5, 23, "ExampleSection",ExpressionUUID->"12b31762-2268-4c9b-b5fa-19b8e075918b",
+Cell[29564, 868, 259, 5, 27, "ExampleSection",ExpressionUUID->"12b31762-2268-4c9b-b5fa-19b8e075918b",
  CellID->2006999605],
-Cell[8619, 268, 252, 5, 23, "ExampleSection",ExpressionUUID->"c58358bd-d234-4810-b6a7-a582ca84b554",
+Cell[29826, 875, 252, 5, 27, "ExampleSection",ExpressionUUID->"c58358bd-d234-4810-b6a7-a582ca84b554",
  CellID->1116717806],
-Cell[8874, 275, 257, 5, 23, "ExampleSection",ExpressionUUID->"e1362c12-e42a-40e1-a897-6d005c50b93b",
+Cell[30081, 882, 257, 5, 27, "ExampleSection",ExpressionUUID->"e1362c12-e42a-40e1-a897-6d005c50b93b",
  CellID->1816574309],
-Cell[9134, 282, 249, 5, 23, "ExampleSection",ExpressionUUID->"6f13685b-f65d-4fba-9df0-ff6a8a15a6e1",
+Cell[30341, 889, 249, 5, 27, "ExampleSection",ExpressionUUID->"6f13685b-f65d-4fba-9df0-ff6a8a15a6e1",
  CellID->389401964]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9420, 292, 111, 1, 72, "MetadataSection",ExpressionUUID->"2bb5707d-610c-4fc0-83e1-cfd6cd4b6dda",
+Cell[30627, 899, 111, 1, 90, "MetadataSection",ExpressionUUID->"2bb5707d-610c-4fc0-83e1-cfd6cd4b6dda",
  CellID->1296136539],
-Cell[9534, 295, 475, 12, 26, "History",ExpressionUUID->"55f11db7-6ce4-49f9-9676-c01ff4f76150",
+Cell[30741, 902, 592, 14, 33, "History",ExpressionUUID->"55f11db7-6ce4-49f9-9676-c01ff4f76150",
  CellID->92695805],
 Cell[CellGroupData[{
-Cell[10034, 311, 485, 13, 21, "CategorizationSection",ExpressionUUID->"e1a799be-ecd4-4a61-991a-ead9f87e65fe",
+Cell[31358, 920, 485, 13, 27, "CategorizationSection",ExpressionUUID->"e1a799be-ecd4-4a61-991a-ead9f87e65fe",
  CellID->1012750560],
-Cell[10522, 326, 134, 2, 35, "Categorization",ExpressionUUID->"5048be65-4780-4885-8ff3-d3751ed80902",
+Cell[31846, 935, 134, 2, 43, "Categorization",ExpressionUUID->"5048be65-4780-4885-8ff3-d3751ed80902",
  CellID->343275798],
-Cell[10659, 330, 166, 2, 35, "Categorization",ExpressionUUID->"7589a47f-5c31-424f-b690-83f4183b1493",
+Cell[31983, 939, 166, 2, 43, "Categorization",ExpressionUUID->"7589a47f-5c31-424f-b690-83f4183b1493",
  CellID->1471003413],
-Cell[10828, 334, 163, 2, 35, "Categorization",ExpressionUUID->"13e5eb59-7134-4b10-938a-de894f7097c0",
+Cell[32152, 943, 163, 2, 43, "Categorization",ExpressionUUID->"13e5eb59-7134-4b10-938a-de894f7097c0",
  CellID->1322618027],
-Cell[10994, 338, 178, 3, 35, "Categorization",ExpressionUUID->"30d6dfd5-ca64-4dfb-a5d0-d679b76d9f62",
+Cell[32318, 947, 178, 3, 43, "Categorization",ExpressionUUID->"30d6dfd5-ca64-4dfb-a5d0-d679b76d9f62",
  CellID->637949692]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[11209, 346, 109, 1, 21, "KeywordsSection",ExpressionUUID->"5cc25335-95c0-491a-94bd-a8a8640cad6e",
+Cell[32533, 955, 109, 1, 26, "KeywordsSection",ExpressionUUID->"5cc25335-95c0-491a-94bd-a8a8640cad6e",
  CellID->83381054],
-Cell[11321, 349, 100, 1, 70, "Keywords",ExpressionUUID->"06e45647-4ccd-4b83-a740-323b445e2a28",
+Cell[32645, 958, 100, 1, 87, "Keywords",ExpressionUUID->"06e45647-4ccd-4b83-a740-323b445e2a28",
  CellID->1226036734]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[11458, 355, 119, 1, 21, "TemplatesSection",ExpressionUUID->"6037921d-016d-4b2b-8303-6f473c6c4b82",
+Cell[32782, 964, 119, 1, 26, "TemplatesSection",ExpressionUUID->"6037921d-016d-4b2b-8303-6f473c6c4b82",
  CellID->893795373],
-Cell[11580, 358, 148, 2, 70, "Template",ExpressionUUID->"c1413153-7c0c-43d2-a5d8-a2b5626611af",
+Cell[32904, 967, 148, 2, 87, "Template",ExpressionUUID->"c1413153-7c0c-43d2-a5d8-a2b5626611af",
  CellID->370723246],
-Cell[11731, 362, 137, 2, 70, "Template",ExpressionUUID->"c951ae1a-9380-4e75-b94f-310d23241a76",
+Cell[33055, 971, 137, 2, 87, "Template",ExpressionUUID->"c951ae1a-9380-4e75-b94f-310d23241a76",
  CellID->895535575],
-Cell[11871, 366, 136, 2, 70, "Template",ExpressionUUID->"97f0d96e-1809-4d82-8177-e75158a9ab0a",
+Cell[33195, 975, 136, 2, 87, "Template",ExpressionUUID->"97f0d96e-1809-4d82-8177-e75158a9ab0a",
  CellID->1701010849],
-Cell[12010, 370, 138, 2, 70, "Template",ExpressionUUID->"06a0ccce-2dd5-47ef-8342-44b5d2b89f87",
+Cell[33334, 979, 138, 2, 87, "Template",ExpressionUUID->"06a0ccce-2dd5-47ef-8342-44b5d2b89f87",
  CellID->1587030279]
 }, Closed]]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
