@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10363,        285]
-NotebookOptionsPosition[      6864,        208]
-NotebookOutlinePosition[      7410,        226]
-CellTagsIndexPosition[      7367,        223]
+NotebookDataLength[     33848,        902]
+NotebookOptionsPosition[     27923,        776]
+NotebookOutlinePosition[     28501,        795]
+CellTagsIndexPosition[     28458,        792]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -21,82 +21,121 @@ Notebook[{
 
 Cell[CellGroupData[{
 Cell["Java Tries with frequencies", "GuideTitle",
- CellID->70117831,ExpressionUUID->"838f186b-cf38-4be3-9748-4be0046054a6"],
+ CellChangeTimes->{{3.8920325291113873`*^9, 3.892032544725919*^9}},
+ CellID->70117831],
 
-Cell["XXXX", "GuideAbstract",
- CellID->1649347061,ExpressionUUID->"3fd76e95-183f-4dd6-a142-e0c6b4c35c73"]
+Cell["\<\
+There are several natural categories for the trie functions: creation, \
+transformation, retrieval, removal, and inspection. Some functions belong to \
+several groups.  \
+\>", "GuideAbstract",
+ CellChangeTimes->{{3.8920287700219917`*^9, 3.892028907902457*^9}, {
+  3.8920551841254663`*^9, 3.892055184955296*^9}},
+ CellID->1649347061]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["", "GuideFunctionsSection",
- CellID->857138751,ExpressionUUID->"0a119de9-0ea1-49f2-b1ad-2c86ca20bab7"],
-
-Cell[TextData[{
- Cell[BoxData[
-  TagBox[
-   FrameBox["\<\"XXXX\"\>"],
-   "FunctionPlaceholder"]], "InlineGuideFunction",
-  TaggingRules->{"PageType" -> "Function"},
-  CellTags->"c40ac8e4-27e1-4161-a8df-4d4f38357a23",ExpressionUUID->
-  "3671e921-6354-4f1f-a1e8-2452d6b3a7d4"],
- " \[LongDash] ",
- Cell[BoxData[
-  TagBox[
-   TagBox[
-    FrameBox["description"],
-    "GuideTextPlaceholder"],
-   EventHandlerTag[{"MouseClicked" :> SelectionMove[
-       EvaluationCell[], All, Cell], Method -> "Preemptive", PassEventsDown -> 
-     Automatic, PassEventsUp -> True}]]],ExpressionUUID->
-  "edcf02c2-09ec-4f56-89e7-58906a0b3f07"]
-}], "GuideText",
- CellID->610683981,ExpressionUUID->"0f6bdd03-3f04-4dfe-b7e5-c945583e8a6b"],
-
-Cell[TextData[{
- Cell[BoxData[
-  TagBox[
-   FrameBox["\<\"XXXX\"\>"],
-   "FunctionPlaceholder"]], "InlineGuideFunction",
-  TaggingRules->{"PageType" -> "Function"},
-  CellTags->"c5c6736a-1ff4-4e4e-8fcf-2d9846cbae62",ExpressionUUID->
-  "d124017c-3ec6-47a0-85dd-cbec9e39335c"],
- " \[LongDash] ",
- Cell[BoxData[
-  TagBox[
-   TagBox[
-    FrameBox["description"],
-    "GuideTextPlaceholder"],
-   EventHandlerTag[{"MouseClicked" :> SelectionMove[
-       EvaluationCell[], All, Cell], Method -> "Preemptive", PassEventsDown -> 
-     Automatic, PassEventsUp -> True}]]],ExpressionUUID->
-  "bbe68c2f-f0e2-4fd0-a512-f084fad4a31c"]
-}], "GuideText",
- CellID->941319654,ExpressionUUID->"8b86c498-55ff-442d-a57a-4e6547fa242f"],
+ CellID->857138751],
 
 Cell[CellGroupData[{
 
-Cell["\t", "GuideDelimiter",
- CellID->247397329,ExpressionUUID->"1465a480-71b6-4eaf-b812-0b1a1618500d"],
+Cell["Installation", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.892027813091969*^9, 3.89202781954944*^9}},
+ CellID->2080984680],
 
 Cell[TextData[{
  Cell[BoxData[
-  TagBox[
-   FrameBox["\<\"XXXX\"\>"],
-   "FunctionPlaceholder"]], "InlineGuideFunction",
-  TaggingRules->{"PageType" -> "Function"},ExpressionUUID->
-  "0f7ea660-8522-4ce6-9b6b-d8538296cdbd"],
+  ButtonBox["JavaTrieInstall",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieInstall"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"1e4ca478-27d0-456d-8086-8c8c434e6f1d"],
+ " \[LongDash] prepare the Java-link connection"
+}], "GuideText",
+ CellChangeTimes->{{3.892027828236888*^9, 3.892027856833776*^9}, {
+  3.892030820608322*^9, 3.892030820608342*^9}},
+ CellID->287452766]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Creation", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.8920278083217783`*^9, 3.892027809468745*^9}},
+ CellID->50972347],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieCreate",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieCreate"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"c40ac8e4-27e1-4161-a8df-4d4f38357a23"],
+ " \[LongDash] create a java trie object"
+}], "GuideText",
+ CellChangeTimes->{{3.892027698795496*^9, 3.8920277115261927`*^9}, {
+  3.892030825893796*^9, 3.892030825893812*^9}},
+ CellID->610683981],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieCreateBySplit",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieCreateBySplit"]]\
+, "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"c5c6736a-1ff4-4e4e-8fcf-2d9846cbae62"],
+ " \[LongDash] create a java trie object by string splitting"
+}], "GuideText",
+ CellChangeTimes->{{3.8920277138903503`*^9, 3.8920277634680567`*^9}, {
+  3.892030831667116*^9, 3.892030831667132*^9}},
+ CellID->941319654],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieInsert",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieInsert"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "446f2c7f-36b4-4bd2-955b-a73c7aa02e10"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieMerge",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieMerge"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"c007e733-9825-4633-ab84-703f4c3087b2",ExpressionUUID->
+  "0e7f3863-45ac-437b-b6e6-4d94ffd71d3f"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieClone",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieClone"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"68255fa1-b823-4734-a50f-cfd6ffd6202d",ExpressionUUID->
+  "a0962fc3-4632-4e2d-b430-e79c0299fcaf"],
  Cell[BoxData[
   RowBox[{
   Cell[TextData[StyleBox[
    " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
-    "1c17e753-1156-499a-bd94-a9fbd8762ac9"], 
+    "23ed8795-4f92-4671-b213-aa048ad8abf1"], 
    DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
-    "ebe61f88-d57d-435b-bd90-ae7bc4c32484", 
-     "f286fe86-cac9-42c1-8a1d-739db56debfd"], $CellContext`cellobj$$ = 
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
     CellObject[
-    "82a61c64-841b-4f76-bd53-43de8ace0ab2", 
-     "a138b62f-4a43-4b44-bc61-2edf1b1c7fdd"]}, 
+    "4ceda7e9-45e3-4db6-ba37-f6352d4a8fc6", 
+     "360b14dd-9c07-46e1-a779-63a4ca0a1e37"]}, 
     TemplateBox[{
       GraphicsBox[{{
          Thickness[0.06], 
@@ -119,100 +158,630 @@ Cell[TextData[{
     Initialization:>($CellContext`nbobj$$ = 
       EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
   "InlineListingAddButton",ExpressionUUID->
-  "82a61c64-841b-4f76-bd53-43de8ace0ab2"]
+  "4ceda7e9-45e3-4db6-ba37-f6352d4a8fc6"]
 }], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8920278973298483`*^9, 3.8920279088336697`*^9}, {
+  3.892027981728465*^9, 3.892027998698018*^9}, {3.892028302589074*^9, 
+  3.89202831238853*^9}, {3.89203083577734*^9, 3.892030846037343*^9}},
+ CellID->1609781741,ExpressionUUID->"578de8c1-4430-426c-97bd-000d26d594ee"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Predicates", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.892028142734789*^9, 3.892028146651599*^9}},
+ CellID->1822898960],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieContainsQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieContainsQ"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "e9bdcc93-e17d-4d19-af8a-94ddf681064f"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieEqualQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieEqualQ"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"854a5610-aa00-445b-a3c4-cb054c22a284",ExpressionUUID->
+  "c417de0d-42d6-481e-a30e-c7a7e1613172"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieKeyQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieKeyQ"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"78e3452a-0c3d-4f8f-8da8-74d3e2bb1360",ExpressionUUID->
+  "fe22b2cf-5326-4187-a7c0-bfa829f76091"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieMemberQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieMemberQ"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"f921404f-a96a-4149-b9f7-cc396c273810",ExpressionUUID->
+  "cca61d0a-110a-40fd-969c-bb40daffe6b5"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieHasCompleteMatchQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieHasCompleteMatchQ"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"40373d45-7307-47f0-acdb-e7c7aa4140da",ExpressionUUID->
+  "bc31b85b-639b-4988-9203-3bd6fafbe687"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "8ccafbab-f16a-499f-b2f9-60285aa8eefc"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
+    CellObject[
+    "7366cf4f-7727-4367-9dfb-83c9d93e1708", 
+     "88da6d66-4fbf-414b-9ede-9916a3f554fc"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "7366cf4f-7727-4367-9dfb-83c9d93e1708"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8920281539850073`*^9, 3.892028263837118*^9}, {
+  3.8922036156276627`*^9, 3.892203628594921*^9}, {3.8922036765113993`*^9, 
+  3.8922036824179153`*^9}},
+ CellID->254106079,ExpressionUUID->"e0e83f60-c5ee-40ca-a4ad-672c10c88362"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Transformation", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.8920283235520067`*^9, 3.8920283261987553`*^9}},
+ CellID->1425459622],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieNodeProbabilities",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieNodeProbabilities"]], "InlineGuideFunction",ExpressionUUID->
+  "108699db-97ae-4e02-9c3c-c74a73a9d99f"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTriePrune",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTriePrune"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"40153777-eec6-4f7c-ad0f-de664a1898fe",ExpressionUUID->
+  "800d7961-407a-468f-9aa7-a1ee64522570"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieShrink",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieShrink"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3077ba00-dd4e-4fca-8119-ca03e4c7932b",ExpressionUUID->
+  "2f77b5c0-1afb-49cd-9d71-f9030922179e"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieShrinkInternalNodes",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieShrinkInternalNodes"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"ecdc1508-bf47-4e5f-8e88-2c6b91f724ad",ExpressionUUID->
+  "575be55b-590a-41f3-981a-5bb5e106c97e"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieMapOptimizationCall",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieMapOptimizationCall"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"6a5f5ce8-9a28-4a09-93f4-f68bc582cd07",ExpressionUUID->
+  "7b6621b9-f39f-491d-9d83-15b51ece2cf2"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "e3b6dbc8-915d-4026-9cd8-93b27c910bc0"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
+    CellObject[
+    "630df8dc-ddcb-4c33-8952-8a37aee40058", 
+     "e6c1a04f-61c0-4bfb-8d3b-37c25eda092d"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "630df8dc-ddcb-4c33-8952-8a37aee40058"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.89202833238725*^9, 3.892028375709159*^9}, {
+  3.8920284120068083`*^9, 3.892028422644449*^9}, {3.8920285205410213`*^9, 
+  3.892028529803071*^9}, {3.8920287014240026`*^9, 3.892028714539225*^9}, {
+  3.892030891346332*^9, 3.8920309125292883`*^9}},
+ CellID->713562885,ExpressionUUID->"af61dccb-d3e3-48a2-80af-c6423adb8274"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Retrieval", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.89202860428511*^9, 3.8920286075830173`*^9}},
+ CellID->64525993,ExpressionUUID->"613293a0-b690-4366-bcb4-6c023f5d69c2"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieRetrieve",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieRetrieve"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "895fa2cf-a660-42d9-a666-730082039a01"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieLeafProbabilities",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieLeafProbabilities"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"252b41c0-9fc2-4786-9872-8aaae370d64c",ExpressionUUID->
+  "96391470-e648-4490-bda0-f607fd3a38ba"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieGetWords",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieGetWords"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"9c2114e2-6b3b-4403-bce2-f9d29c0d4cbf",ExpressionUUID->
+  "2174f7af-f410-4584-bf13-016c0f42c54c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieJSONRootToLeafPaths",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieJSONRootToLeafPaths"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"6e52a2fc-d914-4b86-b993-c71df3765435",ExpressionUUID->
+  "e10df18d-2ad3-4f1d-88ba-a8f869504b2c"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieRootToLeafPaths",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieRootToLeafPaths"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"8db03fbd-f52c-44a5-a8d9-07b6b7f2af10",ExpressionUUID->
+  "285cb70f-5bd8-4899-8c28-f58ed4a3fcfb"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "e98a4744-890e-4435-b057-4c97bd4e245a"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
+    CellObject[
+    "0c9a9dad-0f9a-4efa-908e-9abad2cd4217", 
+     "d54bd930-4bb7-411d-9885-82bbf8078a17"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "0c9a9dad-0f9a-4efa-908e-9abad2cd4217"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.8920286120285053`*^9, 3.8920286944946938`*^9}, {
+  3.892028756502556*^9, 3.892028758179317*^9}, {3.892203693818829*^9, 
+  3.892203708660396*^9}, {3.8922066168141212`*^9, 3.892206616814166*^9}, {
+  3.892207670765748*^9, 3.89220768792316*^9}},
+ CellID->140579920,ExpressionUUID->"472dceaf-afb7-48ee-8fe4-85e986f0d7b2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Removal", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.8920279322862453`*^9, 3.892027934795117*^9}},
+ CellID->803605280],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieThresholdRemove",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieThresholdRemove"]], "InlineGuideFunction",ExpressionUUID->
+  "c527f33c-ba01-409e-9b8d-2bf6eb4c58bd"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieRegexRemove",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieRegexRemove"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"424148e6-5c8f-47d3-b3e8-5ab6cc53e675",ExpressionUUID->
+  "aea7e021-a20f-4666-a806-f66f12e1d8e2"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieParetoFractionRemove",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieParetoFractionRemove"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3d6fcdbe-df26-4b4d-af18-820b27fc7920",ExpressionUUID->
+  "e562b21a-d2d1-44b7-875c-823ec7898b29"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "1222f8e2-cdb1-4cb3-b1ec-c6673d46a3fe"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
+    CellObject[
+    "d4ac340a-f83c-45dc-ab24-51554ad4c285", 
+     "43487bf9-e0da-41fb-8165-957571189840"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "d4ac340a-f83c-45dc-ab24-51554ad4c285"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.892027939205089*^9, 3.892027973719157*^9}, {
+  3.8920283817430973`*^9, 3.8920283941174707`*^9}, {3.8922037188797913`*^9, 
+  3.892203729291753*^9}},
+ CellID->777002982,ExpressionUUID->"3ad8059a-04b2-4252-98d0-4670d603909f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Inspection", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.8920277919092827`*^9, 3.8920277948109417`*^9}, {
+  3.8920285476630774`*^9, 3.892028552513719*^9}, {3.8920288465822353`*^9, 
+  3.892028849606635*^9}},
+ CellID->1512712132],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieNodeCounts",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieNodeCounts"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},ExpressionUUID->
+  "39226adf-bf55-4f43-ab12-620880ae840a"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieForm",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieForm"]], 
+  "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"3a1285b9-15dc-4884-94ca-487caf2f0661",ExpressionUUID->
+  "4761caa2-fd75-4ea8-b35f-928efa71cf6a"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieComparisonGrid",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieComparisonGrid"]\
+], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"9fad6f56-8336-4e56-80c2-06fff229968b",ExpressionUUID->
+  "6046b275-447e-4085-9132-a8a731f811d8"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "890f1bcb-0d48-4126-8901-081e667b2e94"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
+    CellObject[
+    "b55f8413-9797-42b1-bbe3-fc3b08ced0e0", 
+     "721508ce-fcf0-4922-bfe1-4d2867d50111"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "b55f8413-9797-42b1-bbe3-fc3b08ced0e0"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.892027772752688*^9, 3.892027780885675*^9}, {
+  3.89202800498983*^9, 3.892028012822895*^9}, {3.892028561324375*^9, 
+  3.8920285858278217`*^9}, {3.892032024746833*^9, 3.892032040826627*^9}},
  CellID->478567911,ExpressionUUID->"45a79fd8-acf4-4f1e-944f-fbf04b8f0409"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Classification, prediction, generation", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.892028914900466*^9, 3.8920289164410877`*^9}, {
+  3.892203731861868*^9, 3.8922037421803083`*^9}},
+ CellID->1329934651,ExpressionUUID->"bd9ac763-4aa3-40bb-8f5a-a7c9361ed4ac"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieClassify",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieClassify"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "bd9b6727-ba21-4f74-a89d-d8f7770ff054"],
+ StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
+ Cell[BoxData[
+  ButtonBox["JavaTrieLeafProbabilities",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/\
+JavaTrieLeafProbabilities"]], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"4606b7bb-cf61-46d3-bc20-0211657f2262",ExpressionUUID->
+  "772a88fd-dac0-4b69-b0ca-3da68693798b"],
+ Cell[BoxData[
+  RowBox[{
+  Cell[TextData[StyleBox[
+   " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
+    "8e92398c-90d9-402c-932f-d58f1716835b"], 
+   DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
+    "908857e0-cf50-4c17-92a6-5a71b3c3c61d", 
+     "17ef1bf6-eceb-4c58-9104-6457a9c57a4d"], $CellContext`cellobj$$ = 
+    CellObject[
+    "57ed6b52-cbe1-4d56-88d8-17613b8dcf92", 
+     "5836dd79-a010-4754-98d8-0e2a1493c026"]}, 
+    TemplateBox[{
+      GraphicsBox[{{
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         CircleBox[{0, 0}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{0, 0.62}, {0, -0.62}}]}, {
+         Thickness[0.06], 
+         StrokeForm[
+          Hue[0.4167, 0.406, 0.502]], 
+         LineBox[{{-0.62, 0}, {0.62, 0}}]}}, 
+       ImagePadding -> {{1., 1.}, {2.4, 1.}}, ImageSize -> 16, 
+       PlotRange -> {{-1.06, 1.06}, {-1.06, 1.06}}, 
+       BaselinePosition -> (Center -> 
+        Center)], $CellContext`nbobj$$, $CellContext`cellobj$$},
+     "InlineListingAddButton"],
+    Initialization:>($CellContext`nbobj$$ = 
+      EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
+  "InlineListingAddButton",ExpressionUUID->
+  "57ed6b52-cbe1-4d56-88d8-17613b8dcf92"]
+}], "InlineGuideFunctionListing",
+ CellChangeTimes->{{3.892028926208879*^9, 3.892028943150818*^9}, {
+  3.892030880465749*^9, 3.8920308855121717`*^9}},
+ CellID->1893290690,ExpressionUUID->"a6d7df85-4950-43d9-9370-5995a713e670"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\t", "GuideDelimiter",
+ CellID->2120373285,ExpressionUUID->"70305640-431b-4ed6-9dc2-489916f16049"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["JavaTrieRandomChoice",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:AntonAntonov/JavaTriesWithFrequencies/ref/JavaTrieRandomChoice"]],
+   "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"bfd5e643-9c18-476e-b75f-606924ea55b5",ExpressionUUID->
+  "6f09337a-453c-4c56-aa14-18444887e35f"],
+ " \[LongDash] generates random paths"
+}], "GuideText",
+ CellChangeTimes->{{3.89220375420617*^9, 3.892203784117962*^9}},
+ CellID->1770162677,ExpressionUUID->"ff8817e0-6222-4e99-b420-60a828bf17f8"]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Tech Notes", "GuideTutorialsSection",
- CellID->964622162,ExpressionUUID->"7e0e6e1f-744b-472c-9eb0-24d93377d1b4"],
+ CellID->964622162],
 
 Cell["XXXX", "GuideTutorial",
- CellID->1050625531,ExpressionUUID->"a1ba4df7-3a06-4286-8dfc-2374e763a22b"],
+ CellID->1050625531],
 
 Cell["XXXX", "GuideTutorial",
- CellID->1252753883,ExpressionUUID->"5c4bfea5-bb01-44cc-a137-55451be9b9db"]
+ CellID->1252753883]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Related Guides", "GuideMoreAboutSection",
  CellChangeTimes->{{3.8430423939366693`*^9, 3.843042395176153*^9}},
- CellID->1104836393,ExpressionUUID->"63650f4c-e1af-4aca-979d-a321d3eca7e8"],
+ CellID->1104836393],
 
 Cell["XXXX", "GuideMoreAbout",
- CellID->1841645189,ExpressionUUID->"00bd4cef-c031-4ee2-aca3-aa82ba1fcbea"],
+ CellID->1841645189],
 
 Cell["XXXX", "GuideMoreAbout",
- CellID->848887312,ExpressionUUID->"ab3b4e43-97b3-475c-8744-d7ae0404ff6a"]
+ CellID->848887312]
 }, Open  ]],
 
 Cell["Related Links", "GuideRelatedLinksSection",
- CellID->1515185763,ExpressionUUID->"c8b9dab0-d1fd-4fc6-8f6e-b6bcffe0fe32"],
+ CellID->1515185763],
 
 Cell[CellGroupData[{
 
 Cell["Metadata", "MetadataSection",
- CellID->866032615,ExpressionUUID->"b07b3d45-4715-4326-b035-f448a6f7da84"],
+ CellID->866032615],
 
 Cell[TextData[{
  "New in: ",
- Cell["XX", "HistoryData",
-  CellTags->"New",ExpressionUUID->"083c9a69-e115-42f3-b4ec-4dd4c1b5d939"],
+ Cell["1.0.0", "HistoryData",
+  CellTags->"New"],
  " | Modified in: ",
  Cell[" ", "HistoryData",
-  CellTags->"Modified",ExpressionUUID->"c2d35476-96b6-4d49-a75b-759e111e3660"],
+  CellTags->"Modified"],
  " | Obsolete in: ",
  Cell[" ", "HistoryData",
-  CellTags->"Obsolete",ExpressionUUID->
-  "a036e464-bd81-455e-9908-4e81880e04c8"]
+  CellTags->"Obsolete"]
 }], "History",
- CellID->1913484586,ExpressionUUID->"0c035479-f4cb-4895-a3f2-3dd1b212be13"],
+ CellChangeTimes->{{3.89203015534645*^9, 3.89203015748514*^9}},
+ CellID->1913484586],
 
 Cell[CellGroupData[{
 
 Cell["Categorization", "CategorizationSection",
- CellID->1367823077,ExpressionUUID->"688316cc-65fa-4779-9f7c-f628fb56409d"],
+ CellID->1367823077],
 
 Cell["Guide", "Categorization",
  CellLabel->"Entity Type",
- CellID->190014004,ExpressionUUID->"0215342b-87cf-4374-9847-9dcba59d572c"],
+ CellID->190014004],
 
 Cell["AntonAntonov/JavaTriesWithFrequencies", "Categorization",
  CellLabel->"Paclet Name",
- CellID->257182139,ExpressionUUID->"ade91a7a-fe88-4430-ad71-33d3786dc7a1"],
+ CellID->257182139],
 
 Cell["AntonAntonov`JavaTriesWithFrequencies`", "Categorization",
  CellLabel->"Context",
- CellID->1723112409,ExpressionUUID->"f2d2ec30-2842-46c9-bc52-2706c3d388a1"],
+ CellID->1723112409],
 
 Cell["\<\
 AntonAntonov/JavaTriesWithFrequencies/guide/JavaTrieswithfrequencies\
 \>", "Categorization",
  CellLabel->"URI",
- CellID->1533278268,ExpressionUUID->"b0ed0339-13f8-4304-84c4-70fc1af7009b"]
+ CellID->1533278268]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Keywords", "KeywordsSection",
- CellID->4086276,ExpressionUUID->"767792de-c37d-4cd3-af62-b6fbc71be70b"],
+ CellID->4086276],
 
 Cell["XXXX", "Keywords",
- CellID->2106047675,ExpressionUUID->"488c180e-bbac-409e-a1b6-189131a3c6cd"]
+ CellID->2106047675]
 }, Closed]]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{1325, Automatic}, {Automatic, 195}},
+WindowSize->{1430, 1109},
+WindowMargins->{{Automatic, 611}, {130, Automatic}},
 TaggingRules-><|"Paclet" -> "AntonAntonov/JavaTriesWithFrequencies"|>,
+Magnification:>1.25 Inherited,
 FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", 
   CharacterEncoding -> "UTF-8"],
-ExpressionUUID->"ebe61f88-d57d-435b-bd90-ae7bc4c32484"
+ExpressionUUID->"908857e0-cf50-4c17-92a6-5a71b3c3c61d"
 ]
 (* End of Notebook Content *)
 
@@ -226,64 +795,112 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 123, 1, 88, "GuideTitle",ExpressionUUID->"838f186b-cf38-4be3-9748-4be0046054a6",
+Cell[580, 22, 136, 2, 109, "GuideTitle",ExpressionUUID->"838f186b-cf38-4be3-9748-4be0046054a6",
  CellID->70117831],
-Cell[706, 25, 105, 1, 29, "GuideAbstract",ExpressionUUID->"3fd76e95-183f-4dd6-a142-e0c6b4c35c73",
+Cell[719, 26, 342, 7, 60, "GuideAbstract",ExpressionUUID->"3fd76e95-183f-4dd6-a142-e0c6b4c35c73",
  CellID->1649347061]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[848, 31, 108, 1, 72, "GuideFunctionsSection",ExpressionUUID->"0a119de9-0ea1-49f2-b1ad-2c86ca20bab7",
+Cell[1098, 38, 53, 1, 91, "GuideFunctionsSection",ExpressionUUID->"0a119de9-0ea1-49f2-b1ad-2c86ca20bab7",
  CellID->857138751],
-Cell[959, 34, 712, 19, 30, "GuideText",ExpressionUUID->"0f6bdd03-3f04-4dfe-b7e5-c945583e8a6b",
- CellID->610683981],
-Cell[1674, 55, 712, 19, 30, "GuideText",ExpressionUUID->"8b86c498-55ff-442d-a57a-4e6547fa242f",
- CellID->941319654],
 Cell[CellGroupData[{
-Cell[2411, 78, 103, 1, 27, "GuideDelimiter",ExpressionUUID->"1465a480-71b6-4eaf-b812-0b1a1618500d",
- CellID->247397329],
-Cell[2517, 81, 1670, 42, 30, "InlineGuideFunctionListing",ExpressionUUID->"45a79fd8-acf4-4f1e-944f-fbf04b8f0409",
+Cell[1176, 43, 134, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"8de01472-ed19-41fa-9ebc-8fa3628cda9f",
+ CellID->2080984680],
+Cell[1313, 47, 497, 13, 34, "GuideText",ExpressionUUID->"76dd7737-b5e2-417c-837f-85df0e8451eb",
+ CellID->287452766]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1847, 65, 131, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"4476560e-ff62-40b9-84b8-9d486f470f7c",
+ CellID->50972347],
+Cell[1981, 69, 490, 13, 34, "GuideText",ExpressionUUID->"0f6bdd03-3f04-4dfe-b7e5-c945583e8a6b",
+ CellID->610683981],
+Cell[2474, 84, 525, 13, 34, "GuideText",ExpressionUUID->"8b86c498-55ff-442d-a57a-4e6547fa242f",
+ CellID->941319654],
+Cell[3002, 99, 2706, 66, 34, "InlineGuideFunctionListing",ExpressionUUID->"578de8c1-4430-426c-97bd-000d26d594ee",
+ CellID->1609781741]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5745, 170, 133, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"1f3c363f-6309-43af-b66f-f74cb5c4ada2",
+ CellID->1822898960],
+Cell[5881, 174, 3488, 86, 61, "InlineGuideFunctionListing",ExpressionUUID->"e0e83f60-c5ee-40ca-a4ad-672c10c88362",
+ CellID->254106079]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9406, 265, 141, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"50a0db5a-01ee-44a8-8490-fa96bb968d5d",
+ CellID->1425459622],
+Cell[9550, 269, 3626, 87, 61, "InlineGuideFunctionListing",ExpressionUUID->"af61dccb-d3e3-48a2-80af-c6423adb8274",
+ CellID->713562885]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13213, 361, 186, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"613293a0-b690-4366-bcb4-6c023f5d69c2",
+ CellID->64525993],
+Cell[13402, 365, 3626, 87, 86, "InlineGuideFunctionListing",ExpressionUUID->"472dceaf-afb7-48ee-8fe4-85e986f0d7b2",
+ CellID->140579920]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17065, 457, 131, 2, 46, "GuideFunctionsSubsection",ExpressionUUID->"e3a3c697-c9f3-4767-b27e-6f3660851063",
+ CellID->803605280],
+Cell[17199, 461, 2721, 66, 59, "InlineGuideFunctionListing",ExpressionUUID->"3ad8059a-04b2-4252-98d0-4670d603909f",
+ CellID->777002982]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19957, 532, 239, 4, 46, "GuideFunctionsSubsection",ExpressionUUID->"1967f96b-17d3-48a9-91d3-addbad2946ba",
+ CellID->1512712132],
+Cell[20199, 538, 2771, 67, 59, "InlineGuideFunctionListing",ExpressionUUID->"45a79fd8-acf4-4f1e-944f-fbf04b8f0409",
  CellID->478567911]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23007, 610, 269, 3, 46, "GuideFunctionsSubsection",ExpressionUUID->"bd9ac763-4aa3-40bb-8f5a-a7c9361ed4ac",
+ CellID->1329934651],
+Cell[23279, 615, 2243, 55, 34, "InlineGuideFunctionListing",ExpressionUUID->"a6d7df85-4950-43d9-9370-5995a713e670",
+ CellID->1893290690]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25559, 675, 104, 1, 35, "GuideDelimiter",ExpressionUUID->"70305640-431b-4ed6-9dc2-489916f16049",
+ CellID->2120373285],
+Cell[25666, 678, 561, 13, 34, "GuideText",ExpressionUUID->"ff8817e0-6222-4e99-b420-60a828bf17f8",
+ CellID->1770162677]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4236, 129, 118, 1, 74, "GuideTutorialsSection",ExpressionUUID->"7e0e6e1f-744b-472c-9eb0-24d93377d1b4",
+Cell[26276, 697, 63, 1, 93, "GuideTutorialsSection",ExpressionUUID->"7e0e6e1f-744b-472c-9eb0-24d93377d1b4",
  CellID->964622162],
-Cell[4357, 132, 105, 1, 24, "GuideTutorial",ExpressionUUID->"a1ba4df7-3a06-4286-8dfc-2374e763a22b",
+Cell[26342, 700, 50, 1, 30, "GuideTutorial",ExpressionUUID->"a1ba4df7-3a06-4286-8dfc-2374e763a22b",
  CellID->1050625531],
-Cell[4465, 135, 105, 1, 24, "GuideTutorial",ExpressionUUID->"5c4bfea5-bb01-44cc-a137-55451be9b9db",
+Cell[26395, 703, 50, 1, 30, "GuideTutorial",ExpressionUUID->"5c4bfea5-bb01-44cc-a137-55451be9b9db",
  CellID->1252753883]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4607, 141, 191, 2, 74, "GuideMoreAboutSection",ExpressionUUID->"63650f4c-e1af-4aca-979d-a321d3eca7e8",
+Cell[26482, 709, 136, 2, 93, "GuideMoreAboutSection",ExpressionUUID->"63650f4c-e1af-4aca-979d-a321d3eca7e8",
  CellID->1104836393],
-Cell[4801, 145, 106, 1, 24, "GuideMoreAbout",ExpressionUUID->"00bd4cef-c031-4ee2-aca3-aa82ba1fcbea",
+Cell[26621, 713, 51, 1, 30, "GuideMoreAbout",ExpressionUUID->"00bd4cef-c031-4ee2-aca3-aa82ba1fcbea",
  CellID->1841645189],
-Cell[4910, 148, 105, 1, 24, "GuideMoreAbout",ExpressionUUID->"ab3b4e43-97b3-475c-8744-d7ae0404ff6a",
+Cell[26675, 716, 50, 1, 30, "GuideMoreAbout",ExpressionUUID->"ab3b4e43-97b3-475c-8744-d7ae0404ff6a",
  CellID->848887312]
 }, Open  ]],
-Cell[5030, 152, 125, 1, 74, "GuideRelatedLinksSection",ExpressionUUID->"c8b9dab0-d1fd-4fc6-8f6e-b6bcffe0fe32",
+Cell[26740, 720, 70, 1, 93, "GuideRelatedLinksSection",ExpressionUUID->"c8b9dab0-d1fd-4fc6-8f6e-b6bcffe0fe32",
  CellID->1515185763],
 Cell[CellGroupData[{
-Cell[5180, 157, 110, 1, 72, "MetadataSection",ExpressionUUID->"b07b3d45-4715-4326-b035-f448a6f7da84",
+Cell[26835, 725, 55, 1, 90, "MetadataSection",ExpressionUUID->"b07b3d45-4715-4326-b035-f448a6f7da84",
  CellID->866032615],
-Cell[5293, 160, 477, 12, 26, "History",ExpressionUUID->"0c035479-f4cb-4895-a3f2-3dd1b212be13",
+Cell[26893, 728, 321, 12, 33, "History",ExpressionUUID->"0c035479-f4cb-4895-a3f2-3dd1b212be13",
  CellID->1913484586],
 Cell[CellGroupData[{
-Cell[5795, 176, 123, 1, 21, "CategorizationSection",ExpressionUUID->"688316cc-65fa-4779-9f7c-f628fb56409d",
+Cell[27239, 744, 68, 1, 27, "CategorizationSection",ExpressionUUID->"688316cc-65fa-4779-9f7c-f628fb56409d",
  CellID->1367823077],
-Cell[5921, 179, 133, 2, 70, "Categorization",ExpressionUUID->"0215342b-87cf-4374-9847-9dcba59d572c",
+Cell[27310, 747, 78, 2, 87, "Categorization",ExpressionUUID->"0215342b-87cf-4374-9847-9dcba59d572c",
  CellID->190014004],
-Cell[6057, 183, 165, 2, 70, "Categorization",ExpressionUUID->"ade91a7a-fe88-4430-ad71-33d3786dc7a1",
+Cell[27391, 751, 110, 2, 87, "Categorization",ExpressionUUID->"ade91a7a-fe88-4430-ad71-33d3786dc7a1",
  CellID->257182139],
-Cell[6225, 187, 163, 2, 70, "Categorization",ExpressionUUID->"f2d2ec30-2842-46c9-bc52-2706c3d388a1",
+Cell[27504, 755, 108, 2, 87, "Categorization",ExpressionUUID->"f2d2ec30-2842-46c9-bc52-2706c3d388a1",
  CellID->1723112409],
-Cell[6391, 191, 197, 4, 70, "Categorization",ExpressionUUID->"b0ed0339-13f8-4304-84c4-70fc1af7009b",
+Cell[27615, 759, 142, 4, 87, "Categorization",ExpressionUUID->"b0ed0339-13f8-4304-84c4-70fc1af7009b",
  CellID->1533278268]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[6625, 200, 108, 1, 21, "KeywordsSection",ExpressionUUID->"767792de-c37d-4cd3-af62-b6fbc71be70b",
+Cell[27794, 768, 53, 1, 26, "KeywordsSection",ExpressionUUID->"767792de-c37d-4cd3-af62-b6fbc71be70b",
  CellID->4086276],
-Cell[6736, 203, 100, 1, 70, "Keywords",ExpressionUUID->"488c180e-bbac-409e-a1b6-189131a3c6cd",
+Cell[27850, 771, 45, 1, 87, "Keywords",ExpressionUUID->"488c180e-bbac-409e-a1b6-189131a3c6cd",
  CellID->2106047675]
 }, Closed]]
 }, Open  ]]
