@@ -7,7 +7,7 @@ PacletObject[
     "Creator" -> "Anton Antonov",
     "License" -> "Artistic-2.0",
     "PublisherID" -> "AntonAntonov",
-    "Version" -> "1.0.1",
+    "Version" -> "1.0.3",
     "WolframVersion" -> "12.0+",
     "Extensions" -> {
       {
@@ -18,7 +18,7 @@ PacletObject[
           "AntonAntonov`JavaTriesWithFrequencies`JavaTrieClassify",
           "AntonAntonov`JavaTriesWithFrequencies`JavaTrieClone",
           "AntonAntonov`JavaTriesWithFrequencies`JavaTrieComparisonGrid",
-          "AntonAntonov`JavaTriesWithFrequencies`JavaTrieContains",
+          "AntonAntonov`JavaTriesWithFrequencies`JavaTrieContainsQ",
           "AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreate",
           "AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreateBySplit",
           "AntonAntonov`JavaTriesWithFrequencies`JavaTrieEqualQ",

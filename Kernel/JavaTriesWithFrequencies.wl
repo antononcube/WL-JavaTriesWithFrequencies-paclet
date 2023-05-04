@@ -54,7 +54,7 @@
     JavaTrieCompleteMatch[jTr, Characters@"bark"]
     (* False *)
 
-    JavaTrieContains[jTr, Characters@"barked"]
+    JavaTrieContainsQ[jTr, Characters@"barked"]
     (* True *)
 
     JavaTrieToJSON@JavaTrieShrink@jTr
@@ -93,7 +93,7 @@ JavaTrieClone::usage = "JavaTrieClone[ jTr ] makes a deep clone of a given Java 
 JavaTrieHasCompleteMatchQ::usage = "JavaTrieHasCompleteMatchQ[ jTr_, sw:{_String..}] finds does a fraction\
  of the list of strings sw is a complete match in the Java trie jTr.";
 
-JavaTrieContains::usage = "JavaTrieContains[ jTr_, sw:{_String..}] finds is the list of strings\
+JavaTrieContainsQ::usage = "JavaTrieContainsQ[ jTr_, sw:{_String..}] finds is the list of strings\
  sw a complete match in the Java trie jTr.";
 
 JavaTrieCreate::usage = "JavaTrieCreate[ ws:{{_String..}..}] creates a Java trie object from a list of string lists.";
@@ -119,7 +119,7 @@ JavaTrieLeafProbabilities::usage = "Gives the probabilities to reach the leaves 
 
 JavaTrieMapOptimizationCall::usage = "Used for optimization calls over lists of \"words\".";
 
-JavaTrieMemberQ::usage = "Same as JavaTrieContains.";
+JavaTrieMemberQ::usage = "Same as JavaTrieContainsQ.";
 
 JavaTrieMerge::usage = "Merges two Java tries.";
 
@@ -337,14 +337,14 @@ JavaTrieHasCompleteMatchQ[jTr_?JavaObjectQ, sword : {_String ..}] :=
 JavaTrieHasCompleteMatchQ[jTr_?JavaObjectQ, swords : {{_String ..} ..}] :=
     JavaTrieMapOptimizationCall[TrieFunctions`mapHasCompleteMatch, jTr, swords];
 
-Clear[JavaTrieContains];
-JavaTrieContains[jTr_?JavaObjectQ, sword : {_String ..}] :=
+Clear[JavaTrieContainsQ];
+JavaTrieContainsQ[jTr_?JavaObjectQ, sword : {_String ..}] :=
     TrieFunctions`contains[jTr, Arrays`asList[MakeJavaObject[sword]]];
 
-JavaTrieContains[jTr_?JavaObjectQ, swords : {{_String ..} ..}] :=
+JavaTrieContainsQ[jTr_?JavaObjectQ, swords : {{_String ..} ..}] :=
     JavaTrieMapOptimizationCall[TrieFunctions`mapContains, jTr, swords];
 
-JavaTrieMemberQ = JavaTrieContains;
+JavaTrieMemberQ = JavaTrieContainsQ;
 
 Clear[JavaTrieMapOptimizationCall];
 JavaTrieMapOptimizationCall[func_, jTr_?JavaObjectQ,
