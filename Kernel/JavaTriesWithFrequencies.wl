@@ -230,6 +230,18 @@ JavaTrieInsert[jTr_?JavaObjectQ, words : {{_String ..} ..}] :=
     ];
 
 Clear[JavaTrieInstall];
+
+JavaTrieInstall[] := JavaTrieInstall[Automatic];
+
+JavaTrieInstall[opts : OptionsPattern[]] := JavaTrieInstall[Automatic, opts];
+
+JavaTrieInstall[Automatic, opts : OptionsPattern[]] :=
+    Block[{dirName, fileName},
+      dirName = First[PacletFind["AntonAntonov/JavaTriesWithFrequencies"]]["Location"];
+      fileName = FileNameJoin[{dirName, "Kernel", "Java-TriesWithFrequencies.jar"}];
+      JavaTrieInstall[fileName, opts]
+    ];
+
 JavaTrieInstall[path_String, opts : OptionsPattern[]] :=
     Block[{},
       Needs["JLink`"];
