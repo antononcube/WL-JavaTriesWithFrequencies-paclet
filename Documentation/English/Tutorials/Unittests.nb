@@ -1,0 +1,1036 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     51952,       1028]
+NotebookOptionsPosition[     47749,        932]
+NotebookOutlinePosition[     48327,        951]
+CellTagsIndexPosition[     48284,        948]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Unit tests", "Title",
+ CellID->281720635,ExpressionUUID->"841f0141-dd42-43f9-87f1-34590f0b3379"],
+
+Cell["\<\
+In this notebook we show how to run the unit tests provided in the paclet.\
+\>", "Text",
+ CellChangeTimes->{{3.89228825335641*^9, 3.8922882878812437`*^9}, {
+  3.892288650124155*^9, 3.892288652137376*^9}},
+ CellID->2022257941,ExpressionUUID->"6c1998e5-9e9e-4c57-9953-fbee4adfed62"],
+
+Cell[CellGroupData[{
+
+Cell["Test file name", "MathCaption",
+ CellChangeTimes->{{3.8922882901974077`*^9, 3.89228832109087*^9}},
+ CellID->747095208,ExpressionUUID->"bcb8f465-c5eb-487c-9849-51de6ab899f7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dirName", "=", 
+   RowBox[{
+    RowBox[{"First", "[", 
+     RowBox[{
+     "PacletFind", "[", "\"\<AntonAntonov/JavaTriesWithFrequencies\>\"", 
+      "]"}], "]"}], "[", "\"\<Location\>\"", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"fileName", "=", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "dirName", ",", "\"\<Kernel\>\"", ",", 
+      "\"\<JavaTriesWithFrequencies-Unit-Tests.wlt\>\""}], "}"}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.892546880240656*^9, 3.8925469079352922`*^9}},
+ CellLabel->"In[1]:=",
+ CellID->109456294,ExpressionUUID->"42f7a843-c630-4b1c-a928-5c9cf3f6a3f0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Run test report", "MathCaption",
+ CellChangeTimes->{{3.892288406478712*^9, 3.892288411395359*^9}},
+ CellID->1890805132,ExpressionUUID->"2202ef10-c33a-4e58-aea8-7daff66f1e03"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"trObj", "=", 
+  RowBox[{"TestReport", "[", "fileName", "]"}]}]], "Input",
+ CellChangeTimes->{{3.89228842015949*^9, 3.892288422321677*^9}},
+ CellLabel->"In[3]:=",
+ CellID->497050671,ExpressionUUID->"59c6c722-d916-405a-95be-90f287820120"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   TagBox["TestReportObject",
+    "SummaryHead"], "[", 
+   DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
+    
+    TemplateBox[{
+      PaneSelectorBox[{False -> GridBox[{{
+            PaneBox[
+             ButtonBox[
+              DynamicBox[
+               FEPrivate`FrontEndResource["FEBitmaps", "SummaryBoxOpener"]], 
+              ButtonFunction :> (Typeset`open$$ = True), Appearance -> None, 
+              BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+              "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}]], 
+            GraphicsBox[{
+              InsetBox[
+               BoxData[
+                FormBox[
+                 PaneBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "MUnitExpressions", "SuccessIcon"]], Alignment -> Center, 
+                  ImageSize -> 
+                  Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], TraditionalForm]]]}, 
+             PlotRange -> {{0, 1}, {0, 1}}, Background -> GrayLevel[0.93], 
+             Axes -> False, AspectRatio -> 1, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}], Frame -> True, FrameTicks -> None, 
+             FrameStyle -> Directive[
+               Thickness[Tiny], 
+               GrayLevel[0.55]]], 
+            GridBox[{{
+               RowBox[{
+                 TagBox["\"Title: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                 "\"Test Report: JavaTriesWithFrequencies-Unit-Tests.wlt\"", 
+                  "SummaryItem"]}], "\[SpanFromLeft]"}, {
+               RowBox[{
+                 TagBox["\"Success rate: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  TagBox[
+                   InterpretationBox[
+                    StyleBox["\"100%\"", ShowStringCharacters -> False], 1., 
+                    AutoDelete -> True], PercentForm], "SummaryItem"]}], 
+               RowBox[{
+                 TagBox["\"Tests count: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox["22", "SummaryItem"]}]}}, 
+             GridBoxAlignment -> {
+              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+             False, GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
+              BaseStyle -> {
+              ShowStringCharacters -> False, NumberMarks -> False, 
+               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+          AutoDelete -> False, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          BaselinePosition -> {1, 1}], True -> GridBox[{{
+            PaneBox[
+             ButtonBox[
+              DynamicBox[
+               FEPrivate`FrontEndResource["FEBitmaps", "SummaryBoxCloser"]], 
+              ButtonFunction :> (Typeset`open$$ = False), Appearance -> None, 
+              BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+              "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}]], 
+            GraphicsBox[{
+              InsetBox[
+               BoxData[
+                FormBox[
+                 PaneBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "MUnitExpressions", "SuccessIcon"]], Alignment -> Center, 
+                  ImageSize -> 
+                  Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], TraditionalForm]]]}, 
+             PlotRange -> {{0, 1}, {0, 1}}, Background -> GrayLevel[0.93], 
+             Axes -> False, AspectRatio -> 1, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}], Frame -> True, FrameTicks -> None, 
+             FrameStyle -> Directive[
+               Thickness[Tiny], 
+               GrayLevel[0.55]]], 
+            GridBox[{{
+               RowBox[{
+                 TagBox["\"Title: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                 "\"Test Report: JavaTriesWithFrequencies-Unit-Tests.wlt\"", 
+                  "SummaryItem"]}], "\[SpanFromLeft]"}, {
+               RowBox[{
+                 TagBox["\"Success rate: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  TagBox[
+                   InterpretationBox[
+                    StyleBox["\"100%\"", ShowStringCharacters -> False], 1., 
+                    AutoDelete -> True], PercentForm], "SummaryItem"]}], 
+               RowBox[{
+                 TagBox["\"Tests count: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox["22", "SummaryItem"]}]}, {
+               RowBox[{
+                 TagBox["\"Succeeded: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox["22", "SummaryItem"]}], "\[SpanFromLeft]"}, {
+               RowBox[{
+                 TagBox["\"Time elapsed: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  
+                  TemplateBox[{
+                   "0.391879`4.401244308151882", "\"s\"", "seconds", 
+                    "\"Seconds\""}, "Quantity", SyntaxForm -> Mod], 
+                  "SummaryItem"]}], "\[SpanFromLeft]"}}, 
+             GridBoxAlignment -> {
+              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+             False, GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
+              BaseStyle -> {
+              ShowStringCharacters -> False, NumberMarks -> False, 
+               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+          AutoDelete -> False, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          BaselinePosition -> {1, 1}]}, 
+       Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+     "SummaryPanel"],
+    DynamicModuleValues:>{}], "]"}],
+  TestReportObject[<|
+   "Title" -> "Test Report: JavaTriesWithFrequencies-Unit-Tests.wlt", 
+    "Aborted" -> False, 
+    "TestResults" -> <|
+     8126004040741099864 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471127300754`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "4ae3cda5-3c3c-45b3-bbb6-d79d78f6453f", "TestID" -> "JavaTriePaths", 
+         "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "6c30cf5c-6f55-4cac-8cee-4eace47aa24e", "Input" -> 
+         HoldForm[$CellContext`userDirName = $HomeDirectory; \
+$CellContext`dirName = 
+            FileNameJoin[{$CellContext`userDirName, 
+               "Downloads"}]; $CellContext`$JavaTriesWithFrequenciesPath = 
+            FileNameJoin[{$CellContext`dirName, 
+               "Java-TriesWithFrequencies.jar"}]; {
+             DirectoryQ[$CellContext`dirName], 
+             FileExistsQ[$CellContext`$JavaTriesWithFrequenciesPath], Length[
+               PacletFind["AntonAntonov/JavaTriesWithFrequencies"]] > 0}], 
+         "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{True, True, True}], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.001426`3.3046345233478402, "CPUTimeUsed" -> 
+         0.0014259999999999273`, "MemoryUsed" -> 3096, "ExpectedOutput" -> 
+         HoldForm[{True, True, True}], "Outcome" -> "Success"|>], 
+      8427145945670094785 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471127317853`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "54a37484-9e85-4b91-ac3f-2408c5743c01", "TestID" -> 
+         "JavaTrieInitialization", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "9d7e487f-45ce-4486-ad0b-387adfd57792", "Input" -> 
+         HoldForm[
+          AppendTo[$Path, $CellContext`dirName]; 
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieInstall[$CellContext`\
+$JavaTriesWithFrequenciesPath]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[Null], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.258538`5.5630393826988245, "CPUTimeUsed" -> 
+         0.10694300000000023`, "MemoryUsed" -> 1351408, "ExpectedOutput" -> 
+         HoldForm[Null], "Outcome" -> "Success"|>], 7452815486577312992 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547112990918*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "a6f6112e-9039-40d8-98aa-cd91a1bb81c3", "TestID" -> 
+         "JavaTrieCreation1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "d11ff113-2ba7-4ac9-bdce-366208bf9de2", "Input" -> 
+         HoldForm[$CellContext`words = {
+             "bark", "barkeeper", "barkeepers", "barkeep", "barks", "barking",
+               "barked", "barker", "barkers"}; $CellContext`jTr = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreateBySplit[$\
+CellContext`words]; StringMatchQ[
+             SymbolName[$CellContext`jTr], 
+             StringExpression["JavaObject", 
+              BlankSequence[]]]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[True], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.045132`4.804999577302017, "CPUTimeUsed" -> 
+         0.03161499999999995, "MemoryUsed" -> 500536, "ExpectedOutput" -> 
+         HoldForm[True], "Outcome" -> "Success"|>], 3348628836601148960 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130364594`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "58a9b156-cc1e-4204-b635-e7ee0efd0948", "TestID" -> 
+         "JavaTrieCreation2", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "c637931b-2b8b-4628-a0c2-bc1aa3ca7168", "Input" -> 
+         HoldForm[$CellContext`words2 = {
+             "bar", "barring", "car", "care", "caress", "cold", 
+              "colder"}; $CellContext`jTr2 = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreateBySplit[$\
+CellContext`words2]; StringMatchQ[
+             SymbolName[$CellContext`jTr2], 
+             StringExpression["JavaObject", 
+              BlankSequence[]]]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[True], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.001073`3.1811147197979452, "CPUTimeUsed" -> 
+         0.000668000000000113, "MemoryUsed" -> 27872, "ExpectedOutput" -> 
+         HoldForm[True], "Outcome" -> "Success"|>], 8347242551917290989 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130378833`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "d7da7ee0-e752-42bc-9f73-b837d2f74389", "TestID" -> None, 
+         "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "1ee97c4a-8f8f-459f-af88-941f901553bd", "Input" -> 
+         HoldForm[$CellContext`jTr1 = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreate[
+              Map[Characters, $CellContext`words]]; StringMatchQ[
+             SymbolName[$CellContext`jTr1], 
+             StringExpression["JavaObject", 
+              BlankSequence[]]]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[True], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.026996`4.581814417301345, "CPUTimeUsed" -> 
+         0.020085000000000353`, "MemoryUsed" -> 497240, "ExpectedOutput" -> 
+         HoldForm[True], "Outcome" -> "Success"|>], 6876972102746113793 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547113065266*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "6f1fa900-2f80-4f22-b984-a7f5282e4d60", "TestID" -> "JavaTrieToJSON",
+          "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "6756099d-53fe-4e4d-b446-207b23a561f7", "Input" -> 
+         HoldForm[$CellContext`res = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[$\
+CellContext`jTr]]; 
+           MatchQ[$CellContext`res, <|
+             "key" -> "", "value" -> 9., "children" -> 
+              BlankNullSequence[]|>]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[True], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.011657`4.217101794302689, "CPUTimeUsed" -> 
+         0.0029920000000003277`, "MemoryUsed" -> 36280, "ExpectedOutput" -> 
+         HoldForm[True], "Outcome" -> "Success"|>], 613783640315559201 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130772295`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "f5c07ac9-a9bb-42c2-a0db-4bd44cd2b70c", "TestID" -> 
+         "JavaTrieHasCompleteMatchQ", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "1467ef97-2043-4fea-9a80-c469754af6d7", "Input" -> 
+         HoldForm[
+           Map[
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieHasCompleteMatchQ[$\
+CellContext`jTr, 
+             Characters[#]]& , {"bark", "ba"}]], "ExpectedMessages" -> 
+         HoldForm[{}], "ActualOutput" -> HoldForm[{True, False}], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.001093`3.189135159781697, "CPUTimeUsed" -> 0.0006919999999999149, 
+         "MemoryUsed" -> 28072, "ExpectedOutput" -> HoldForm[{True, False}], 
+         "Outcome" -> "Success"|>], 6445571286655101670 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130787015`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "191660ac-b048-4480-b879-65e84e9dc1b5", "TestID" -> 
+         "JavaTrieShrink1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "c4f48c48-f636-443d-bbe0-6a39de821540", "Input" -> 
+         HoldForm[
+           Cases[
+            ReplaceRepeated[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[$\
+CellContext`jTr]], <|
+               Pattern[$CellContext`x, 
+                BlankSequence[]]|> :> {$CellContext`x}], ("key" -> 
+             Pattern[$CellContext`v, 
+               Blank[]]) :> $CellContext`v, Infinity]], "ExpectedMessages" -> 
+         HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{
+           "", "bark", "s", "ing", "e", "r", "s", "d", "ep", "er", "s"}], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.001375`3.2888176959982753, "CPUTimeUsed" -> 0.0011689999999999756`,
+          "MemoryUsed" -> 15408, "ExpectedOutput" -> 
+         HoldForm[{
+           "", "bark", "s", "ing", "e", "r", "s", "d", "ep", "er", "s"}], 
+         "Outcome" -> "Success"|>], 2933686725992960479 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130804133`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "c1476b20-2817-45fa-bef8-f6d9c0dc1251", "TestID" -> 
+         "JavaTrieShrink2", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "ea2b07e6-1812-49e6-8393-03acadea1254", "Input" -> 
+         HoldForm[
+           Cases[
+            ReplaceRepeated[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[$\
+CellContext`jTr, "~"]], <|
+               Pattern[$CellContext`x, 
+                BlankSequence[]]|> :> {$CellContext`x}], ("key" -> 
+             Pattern[$CellContext`v, 
+               Blank[]]) :> $CellContext`v, Infinity]], "ExpectedMessages" -> 
+         HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{
+           "", "b~a~r~k", "i~n~g", "s", "e", "r", "s", "d", "e~p", "e~r", 
+            "s"}], "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.001217`3.235805576062059, "CPUTimeUsed" -> 0.001042999999999683, 
+         "MemoryUsed" -> 15288, "ExpectedOutput" -> 
+         HoldForm[{
+           "", "b~a~r~k", "i~n~g", "s", "e", "r", "s", "d", "e~p", "e~r", 
+            "s"}], "Outcome" -> "Success"|>], 2268541159138651644 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130818872`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "fecccb4e-d8e2-40e7-b5dc-25aa0351572c", "TestID" -> 
+         "JavaTrieContains1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "342b851c-9f08-4a3d-915a-d13ae736d531", "Input" -> 
+         HoldForm[
+           JLink`JavaObjectToExpression[
+            
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieContainsQ[$\
+CellContext`jTr, 
+             Map[Characters, {"barked", "balm", "barking"}]]]], 
+         "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{True, False, True}], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.000917`3.112884333502015, "CPUTimeUsed" -> 
+         0.000512000000000068, "MemoryUsed" -> 27480, "ExpectedOutput" -> 
+         HoldForm[{True, False, True}], "Outcome" -> "Success"|>], 
+      805569089919304505 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130830374`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "8ec8c0eb-457a-43db-b17f-4eda000ba30b", "TestID" -> None, 
+         "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "ffa4c925-7680-4d9a-a006-e6832ea629ff", "Input" -> 
+         HoldForm[
+           JLink`JavaObjectToExpression[
+            
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieHasCompleteMatchQ[$\
+CellContext`jTr, 
+             Map[Characters, {"barked", "balm", "barking"}]]]], 
+         "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{True, False, True}], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.000667`2.974640831748543, "CPUTimeUsed" -> 
+         0.0004499999999998394, "MemoryUsed" -> 27544, "ExpectedOutput" -> 
+         HoldForm[{True, False, True}], "Outcome" -> "Success"|>], 
+      6787954262519614980 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130839534`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "65a7e623-e232-4b6f-8415-451e61c00b66", "TestID" -> 
+         "JavaTrieGetWords1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "dd5932b6-b1c3-4674-a259-568fcaf1202d", "Input" -> 
+         HoldForm[
+           Apply[StringJoin, 
+            
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[$\
+CellContext`jTr2, {"b"}], {1}]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[{"bar", "barring"}], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.000814`3.0611394027211953, "CPUTimeUsed" -> 0.0005410000000001247, 
+         "MemoryUsed" -> 34048, "ExpectedOutput" -> 
+         HoldForm[{"bar", "barring"}], "Outcome" -> "Success"|>], 
+      6731021071858830274 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471130850034`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "ab27882b-2c4d-45f8-a806-796db17f3d54", "TestID" -> 
+         "JavaTrieGetWords2", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "e8d1ea75-74ee-4901-917b-3b97f7aa9847", "Input" -> 
+         HoldForm[
+           Apply[StringJoin, 
+            
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[$\
+CellContext`jTr2, {"c"}], {1}]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> 
+         HoldForm[{"car", "care", "caress", "cold", "colder"}], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.001152`3.2119674769191873, "CPUTimeUsed" -> 0.0008080000000001419, 
+         "MemoryUsed" -> 53072, "ExpectedOutput" -> 
+         HoldForm[{"car", "care", "caress", "cold", "colder"}], "Outcome" -> 
+         "Success"|>], 7757994032958054029 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547113086428*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "4106ca33-e11e-4738-b6f8-e1d52ad2c6a1", "TestID" -> 
+         "JavaTrieGetWords3", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "131f113e-5127-405e-a14b-accad3a2062b", "Input" -> 
+         HoldForm[$CellContext`jTr3 = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieMerge[$CellContext`\
+jTr, $CellContext`jTr2]; Union[
+             Apply[StringJoin, 
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[$\
+CellContext`jTr3, {"b"}], {1}], 
+             Apply[StringJoin, 
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[$\
+CellContext`jTr3, {"c"}], {1}]]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> 
+         HoldForm[{
+           "bar", "bark", "barked", "barkeep", "barkeeper", "barkeepers", 
+            "barker", "barkers", "barking", "barks", "barring", "car", "care",
+             "caress", "cold", "colder"}], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.003001`3.6277809932568466, "CPUTimeUsed" -> 
+         0.002019000000000215, "MemoryUsed" -> 143384, "ExpectedOutput" -> 
+         HoldForm[{
+           "bar", "bark", "barked", "barkeep", "barkeeper", "barkeepers", 
+            "barker", "barkers", "barking", "barks", "barring", "car", "care",
+             "caress", "cold", "colder"}], "Outcome" -> "Success"|>], 
+      2185158025629074697 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547113089764*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "fc94d2f2-73f4-4789-9e4a-ce082f480dab", "TestID" -> 
+         "JavaRootToLeafPaths1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "ed10d782-c74d-465e-a1f2-dd974ec41956", "Input" -> 
+         HoldForm[
+           
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieRootToLeafPaths[$\
+CellContext`jTr]], "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{{{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {"k", 9.}}, {{
+             "", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {"k", 9.}, {
+             "s", 1.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"r", 2.}}, {{"", 9.}, {"b", 9.}, {
+             "a", 9.}, {"r", 9.}, {"k", 9.}, {"e", 6.}, {"r", 2.}, {
+             "s", 1.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"d", 1.}}, {{"", 9.}, {"b", 9.}, {
+             "a", 9.}, {"r", 9.}, {"k", 9.}, {"e", 6.}, {"e", 3.}, {
+             "p", 3.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"e", 3.}, {"p", 3.}, {"e", 2.}, {
+             "r", 2.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"e", 3.}, {"p", 3.}, {"e", 2.}, {
+             "r", 2.}, {"s", 1.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {
+             "r", 9.}, {"k", 9.}, {"i", 1.}, {"n", 1.}, {"g", 1.}}}], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.002452`3.5400354636783713, "CPUTimeUsed" -> 0.001574999999999882, 
+         "MemoryUsed" -> 139112, "ExpectedOutput" -> 
+         HoldForm[{{{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {"k", 9.}}, {{
+             "", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {"k", 9.}, {
+             "s", 1.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"r", 2.}}, {{"", 9.}, {"b", 9.}, {
+             "a", 9.}, {"r", 9.}, {"k", 9.}, {"e", 6.}, {"r", 2.}, {
+             "s", 1.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"d", 1.}}, {{"", 9.}, {"b", 9.}, {
+             "a", 9.}, {"r", 9.}, {"k", 9.}, {"e", 6.}, {"e", 3.}, {
+             "p", 3.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"e", 3.}, {"p", 3.}, {"e", 2.}, {
+             "r", 2.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {"r", 9.}, {
+             "k", 9.}, {"e", 6.}, {"e", 3.}, {"p", 3.}, {"e", 2.}, {
+             "r", 2.}, {"s", 1.}}, {{"", 9.}, {"b", 9.}, {"a", 9.}, {
+             "r", 9.}, {"k", 9.}, {"i", 1.}, {"n", 1.}, {"g", 1.}}}], 
+         "Outcome" -> "Success"|>], 6014976068452139056 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547113092471*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "b445a373-8c37-4d1e-a8e0-d25017ec0925", "TestID" -> 
+         "JavaTrieShrinkAndGetWords1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "722fd6f4-28d8-4016-96b8-752bdfdb2e17", "Input" -> 
+         HoldForm[
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[
+            
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[$CellContext`\
+jTr], {"bark"}]], "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[{{"bark"}, {"bark", "s"}, {"bark", "ing"}, {
+            "bark", "e", "r"}, {"bark", "e", "r", "s"}, {"bark", "e", "d"}, {
+            "bark", "e", "ep"}, {"bark", "e", "ep", "er"}, {
+            "bark", "e", "ep", "er", "s"}}], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.001415`3.3012714376923027, "CPUTimeUsed" -> 
+         0.0009699999999996933, "MemoryUsed" -> 83192, "ExpectedOutput" -> 
+         HoldForm[{{"bark"}, {"bark", "s"}, {"bark", "ing"}, {
+            "bark", "e", "r"}, {"bark", "e", "r", "s"}, {"bark", "e", "d"}, {
+            "bark", "e", "ep"}, {"bark", "e", "ep", "er"}, {
+            "bark", "e", "ep", "er", "s"}}], "Outcome" -> "Success"|>], 
+      3864526517994996126 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547113094136*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "86bc0f6d-a44f-4588-a3d8-fe2e13caa11f", "TestID" -> "JavaTrieEqual1",
+          "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "05630f5d-8a43-4b53-86f8-9e4095e502d9", "Input" -> 
+         HoldForm[$CellContext`jTr = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreateBySplit[$\
+CellContext`words]; $CellContext`jTr1 = 
+            AntonAntonov`JavaTriesWithFrequencies`JavaTrieCreate[
+              Map[Characters, $CellContext`words]]; 
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieEqualQ[$CellContext`\
+jTr, $CellContext`jTr1]], "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[True], "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.018624`4.420587960801789, "CPUTimeUsed" -> 0.013582000000000427`, 
+         "MemoryUsed" -> 463784, "ExpectedOutput" -> HoldForm[True], 
+         "Outcome" -> "Success"|>], 2430824754109175086 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471131130424`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "a0c6bc82-1736-46eb-862a-786e7c63545f", "TestID" -> 
+         "JavaTrieCloneEquality1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "08f04eb7-8cdd-49b8-9e56-2e7ab733de8a", "Input" -> 
+         HoldForm[AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+             
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[$\
+CellContext`jTr]] == AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieClone[$\
+CellContext`jTr]]]], "ExpectedMessages" -> HoldForm[{}], "ActualOutput" -> 
+         HoldForm[True], "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.002645`3.5729406742031986, "CPUTimeUsed" -> 0.0022720000000000518`,
+          "MemoryUsed" -> 28120, "ExpectedOutput" -> HoldForm[True], 
+         "Outcome" -> "Success"|>], 1291485635588840311 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471131159816`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "9e23202d-6705-4d40-8c8a-5c983a0d41c1", "TestID" -> 
+         "JavaTrieHasCompleteMatchQ1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "3441200a-9057-4180-998d-d2047d6c4156", "Input" -> 
+         HoldForm[
+           Map[
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieHasCompleteMatchQ[$\
+CellContext`jTr2, 
+             Characters[#]]& , {"ba", "bar"}]], "ExpectedMessages" -> 
+         HoldForm[{}], "ActualOutput" -> HoldForm[{False, True}], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.00089`3.099905004476907, "CPUTimeUsed" -> 0.0006430000000001712, 
+         "MemoryUsed" -> 28008, "ExpectedOutput" -> HoldForm[{False, True}], 
+         "Outcome" -> "Success"|>], 7020359553017747450 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.892547113117154*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "2607875e-042c-481f-abf8-b01effa72024", "TestID" -> 
+         "JavaTrieGetWords1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "46a1719d-452c-44bb-946e-6a45bb92cffe", "Input" -> 
+         HoldForm[
+          AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[$CellContext`\
+jTr, {"b", "a", "r", "k"}] == 
+           AntonAntonov`JavaTriesWithFrequencies`JavaTrieGetWords[
+             
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieNodeProbabilities[$\
+CellContext`jTr], {"b", "a", "r", "k"}]], "ExpectedMessages" -> HoldForm[{}], 
+         "ActualOutput" -> HoldForm[True], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.003146`3.648273716119262, "CPUTimeUsed" -> 
+         0.002020000000000355, "MemoryUsed" -> 157624, "ExpectedOutput" -> 
+         HoldForm[True], "Outcome" -> "Success"|>], 6248984847776022726 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471131206074`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "bb7186a7-ad9d-4266-8bc7-34b15dc64f68", "TestID" -> 
+         "JavaTrieRootToLeafPaths1", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "737dc713-7a36-4e49-9225-955ec5d06e39", "Input" -> 
+         HoldForm[ReplaceAll[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieRootToLeafPaths[
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieRetrieve[$\
+CellContext`jTr, {"b", "a", "r", "k"}]], PatternTest[
+               Pattern[$CellContext`x, 
+                Blank[]], NumberQ] :> 0] == ReplaceAll[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieRootToLeafPaths[
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieRetrieve[
+               
+               AntonAntonov`JavaTriesWithFrequencies`\
+JavaTrieNodeProbabilities[$CellContext`jTr], {"b", "a", "r", "k"}]], 
+             PatternTest[
+               Pattern[$CellContext`x, 
+                Blank[]], NumberQ] :> 0]], "ExpectedMessages" -> HoldForm[{}],
+          "ActualOutput" -> HoldForm[True], "ActualMessages" -> {}, 
+         "AbsoluteTimeUsed" -> 0.005114`3.85927572152231, "CPUTimeUsed" -> 
+         0.003662999999999972, "MemoryUsed" -> 305464, "ExpectedOutput" -> 
+         HoldForm[True], "Outcome" -> "Success"|>], 8948184886701243272 -> 
+      TestObject[<|
+        "MetaInformation" -> None, "AbsoluteTime" -> 3.8925471131260033`*^9, 
+         "SameTest" -> SameQ, "SameMessages" -> Testing`MessageMatchQ, 
+         "MemoryConstraint" -> DirectedInfinity[1], "TimeConstraint" -> 
+         DirectedInfinity[1], "CreationID" -> 
+         "3f5a4526-65b3-47ed-8910-40e0fa28bb0f", "TestID" -> 
+         "JavaTrieShrink2", "TestFileName" -> 
+         "/Users/antonov/Library/Mathematica/Paclets/Repository/AntonAntonov__\
+JavaTriesWithFrequencies-1.0.4/Kernel/JavaTriesWithFrequencies-Unit-Tests.\
+wlt", "EvaluationID" -> "579697f8-09af-44e7-99ce-e2279702c1fb", "Input" -> 
+         HoldForm[Cases[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+              
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[$\
+CellContext`jTr]], ("key" -> Pattern[$CellContext`v, 
+                Blank[]]) :> $CellContext`v, Infinity] == Cases[
+             AntonAntonov`JavaTriesWithFrequencies`JavaTrieToJSON[
+              AntonAntonov`JavaTriesWithFrequencies`JavaTrieShrink[
+               
+               AntonAntonov`JavaTriesWithFrequencies`\
+JavaTrieNodeProbabilities[$CellContext`jTr]]], ("key" -> 
+              Pattern[$CellContext`v, 
+                Blank[]]) :> $CellContext`v, Infinity]], "ExpectedMessages" -> 
+         HoldForm[{}], "ActualOutput" -> HoldForm[True], 
+         "ActualMessages" -> {}, "AbsoluteTimeUsed" -> 
+         0.002535`3.554492961501349, "CPUTimeUsed" -> 0.0021809999999997665`, 
+         "MemoryUsed" -> 27696, "ExpectedOutput" -> HoldForm[True], "Outcome" -> 
+         "Success"|>]|>, "FailureResults" -> <||>, 
+    "TestsNotEvaluatedKeys" -> {}, "TestsFailedWrongResultsKeys" -> {}, 
+    "TestsFailedWithMessagesKeys" -> {}, "TestsFailedWithErrorsKeys" -> {}, 
+    "TestsSucceededKeys" -> {8126004040741099864, 8427145945670094785, 
+     7452815486577312992, 3348628836601148960, 8347242551917290989, 
+     6876972102746113793, 613783640315559201, 6445571286655101670, 
+     2933686725992960479, 2268541159138651644, 805569089919304505, 
+     6787954262519614980, 6731021071858830274, 7757994032958054029, 
+     2185158025629074697, 6014976068452139056, 3864526517994996126, 
+     2430824754109175086, 1291485635588840311, 7020359553017747450, 
+     6248984847776022726, 8948184886701243272}|>],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.89254691133558*^9, 3.8925471133036613`*^9},
+ CellLabel->"Out[3]=",
+ CellID->1992473874,ExpressionUUID->"09e424ba-8755-4ca4-b7dd-714172fdaa23"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Failed tests (if any)", "MathCaption",
+ CellChangeTimes->{{3.892288545226383*^9, 3.89228855069459*^9}},
+ CellID->1518812869,ExpressionUUID->"2f9c43d8-ccfa-47a0-a8d0-5f2829a1e767"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"trObj", "[", "\"\<TestsFailed\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.892287271707075*^9, 3.8922873013840647`*^9}},
+ CellLabel->"In[4]:=",
+ CellID->211805466,ExpressionUUID->"f9288dcd-bf90-441b-81b2-2a0aae5d7c8e"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"TestsFailedWrongResults\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"TestsFailedWithMessages\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"TestsFailedWithErrors\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", "\[RightAssociation]"}]}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.892288552044718*^9, 3.892546912542692*^9, 
+  3.892547116157814*^9},
+ CellLabel->"Out[4]=",
+ CellID->352458057,ExpressionUUID->"caeb9ddb-1b84-45d3-b830-76a57ea392a5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See the unit tests", "MathCaption",
+ CellChangeTimes->{{3.892288437012497*^9, 3.892288442164316*^9}, {
+  3.892288526629485*^9, 3.892288527406782*^9}},
+ CellID->1579604952,ExpressionUUID->"984f1d1d-42b1-422c-b5eb-24a6fc1fe3ad"],
+
+Cell[BoxData[
+ RowBox[{"NotebookOpen", "[", "fileName", "]"}]], "Input",
+ CellChangeTimes->{{3.892288443045827*^9, 3.8922884636520147`*^9}},
+ CellLabel->"In[43]:=",
+ CellID->759331245,ExpressionUUID->"d676eb80-4262-4844-9621-ea145d595f6d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "TutorialMoreAboutSection",
+ CellChangeTimes->{{3.843042384656711*^9, 3.843042386024461*^9}},
+ CellID->329158407,ExpressionUUID->"8d50b768-8d74-457f-8491-561d5b0df8ad"],
+
+Cell[TextData[ButtonBox["Java Tries with frequencies",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:AntonAntonov/JavaTriesWithFrequencies/guide/\
+JavaTrieswithfrequencies"]], "TutorialMoreAbout",
+ CellChangeTimes->{{3.892547134045356*^9, 3.892547156335032*^9}},
+ CellID->247471777,ExpressionUUID->"498e933c-1c2c-4754-a394-28134e6ab0cd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Tech Notes", "RelatedTutorialsSection",
+ CellID->1729815447,ExpressionUUID->"648b26d1-18d9-41f5-810b-003e4d7651bd"],
+
+Cell["XXXX", "RelatedTutorials",
+ CellID->374604643,ExpressionUUID->"2d9bf28c-3f15-4006-88f9-5463fe1c1d66"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->1705665544,ExpressionUUID->"d3d3ae8b-1f34-4c59-8883-9d59cb926ae1"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["1.0.5", "HistoryData",
+  CellTags->"New",ExpressionUUID->"f6a514a5-b361-4ccf-ad30-47cc1bd6d292"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"d084afe9-3b8b-4504-902c-efc4de9116a3"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "254f6c19-633f-4c70-ab4e-09d157c72261"]
+}], "History",
+ CellChangeTimes->{{3.892288295564838*^9, 3.89228829675613*^9}, {
+  3.892288597295397*^9, 3.892288597755954*^9}},
+ CellID->361594205,ExpressionUUID->"7fc0773e-06ae-4cc3-9d44-41b6c774a9bc"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->2082566072,ExpressionUUID->"c819006b-6b3c-41a1-ae9a-4044ed0098f9"],
+
+Cell["Tech Note", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->1999493298,ExpressionUUID->"c7e87015-98b1-41ea-ab64-d388798d2e44"],
+
+Cell["AntonAntonov/JavaTriesWithFrequencies", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->1659751230,ExpressionUUID->"87eaeedd-d599-4000-981a-3c62292e91ac"],
+
+Cell["AntonAntonov`JavaTriesWithFrequencies`", "Categorization",
+ CellLabel->"Context",
+ CellID->1773831727,ExpressionUUID->"e3509cbe-2170-47ed-98ae-cdac5f332b10"],
+
+Cell["AntonAntonov/JavaTriesWithFrequencies/tutorial/Unittests", \
+"Categorization",
+ CellLabel->"URI",
+ CellID->1421848035,ExpressionUUID->"4a666f69-48d0-48c7-a9f6-2333e321357f"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1949384076,ExpressionUUID->"6a1ca086-4bb4-41d0-9f2d-bcf044f1882b"],
+
+Cell["Trie", "Keywords",
+ CellChangeTimes->{{3.892288600479774*^9, 3.892288601607532*^9}},
+ CellID->1287646700,ExpressionUUID->"103f247a-7542-401d-aa7d-d48fdb95de15"],
+
+Cell["Java", "Keywords",
+ CellChangeTimes->{{3.892288600479774*^9, 3.892288604417488*^9}},
+ CellID->92865427,ExpressionUUID->"b95e58dc-d8e7-4cb3-ac22-fffaafb9c503"],
+
+Cell["Testing", "Keywords",
+ CellChangeTimes->{{3.892288600479774*^9, 3.8922886089731894`*^9}},
+ CellID->1922881605,ExpressionUUID->"41a66381-4b6a-471b-9141-753064a3c54f"],
+
+Cell["Unit test", "Keywords",
+ CellChangeTimes->{{3.892288600479774*^9, 3.8922886119633217`*^9}},
+ CellID->888959340,ExpressionUUID->"386c3691-a32a-46aa-972f-7df0ddd85a3f"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1123, 983},
+WindowMargins->{{Automatic, 1001}, {Automatic, 25}},
+TaggingRules-><|"Paclet" -> "AntonAntonov/JavaTriesWithFrequencies"|>,
+Magnification:>1.25 Inherited,
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (April 30, 2023)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TechNotePageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"2913c2c3-7913-4a79-9055-f67e268dfce8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 102, 1, 141, "Title",ExpressionUUID->"841f0141-dd42-43f9-87f1-34590f0b3379",
+ CellID->281720635],
+Cell[685, 25, 290, 5, 31, "Text",ExpressionUUID->"6c1998e5-9e9e-4c57-9953-fbee4adfed62",
+ CellID->2022257941],
+Cell[CellGroupData[{
+Cell[1000, 34, 179, 2, 47, "MathCaption",ExpressionUUID->"bcb8f465-c5eb-487c-9849-51de6ab899f7",
+ CellID->747095208],
+Cell[1182, 38, 656, 18, 106, "Input",ExpressionUUID->"42f7a843-c630-4b1c-a928-5c9cf3f6a3f0",
+ CellID->109456294]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1875, 61, 180, 2, 52, "MathCaption",ExpressionUUID->"2202ef10-c33a-4e58-aea8-7daff66f1e03",
+ CellID->1890805132],
+Cell[CellGroupData[{
+Cell[2080, 67, 260, 5, 33, "Input",ExpressionUUID->"59c6c722-d916-405a-95be-90f287820120",
+ CellID->497050671],
+Cell[2343, 74, 40463, 717, 66, "Output",ExpressionUUID->"09e424ba-8755-4ca4-b7dd-714172fdaa23",
+ CellID->1992473874]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42855, 797, 185, 2, 52, "MathCaption",ExpressionUUID->"2f9c43d8-ccfa-47a0-a8d0-5f2829a1e767",
+ CellID->1518812869],
+Cell[CellGroupData[{
+Cell[43065, 803, 242, 4, 33, "Input",ExpressionUUID->"f9288dcd-bf90-441b-81b2-2a0aae5d7c8e",
+ CellID->211805466],
+Cell[43310, 809, 651, 13, 57, "Output",ExpressionUUID->"caeb9ddb-1b84-45d3-b830-76a57ea392a5",
+ CellID->352458057]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44010, 828, 232, 3, 52, "MathCaption",ExpressionUUID->"984f1d1d-42b1-422c-b5eb-24a6fc1fe3ad",
+ CellID->1579604952],
+Cell[44245, 833, 239, 4, 33, "Input",ExpressionUUID->"d676eb80-4262-4844-9621-ea145d595f6d",
+ CellID->759331245]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44521, 842, 191, 2, 93, "TutorialMoreAboutSection",ExpressionUUID->"8d50b768-8d74-457f-8491-561d5b0df8ad",
+ CellID->329158407],
+Cell[44715, 846, 335, 6, 30, "TutorialMoreAbout",ExpressionUUID->"498e933c-1c2c-4754-a394-28134e6ab0cd",
+ CellID->247471777]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45087, 857, 129, 1, 93, "RelatedTutorialsSection",ExpressionUUID->"648b26d1-18d9-41f5-810b-003e4d7651bd",
+ CellID->1729815447],
+Cell[45219, 860, 107, 1, 30, "RelatedTutorials",ExpressionUUID->"2d9bf28c-3f15-4006-88f9-5463fe1c1d66",
+ CellID->374604643]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45375, 867, 111, 1, 90, "MetadataSection",ExpressionUUID->"d3d3ae8b-1f34-4c59-8883-9d59cb926ae1",
+ CellID->1705665544],
+Cell[45489, 870, 593, 14, 33, "History",ExpressionUUID->"7fc0773e-06ae-4cc3-9d44-41b6c774a9bc",
+ CellID->361594205],
+Cell[CellGroupData[{
+Cell[46107, 888, 123, 1, 27, "CategorizationSection",ExpressionUUID->"c819006b-6b3c-41a1-ae9a-4044ed0098f9",
+ CellID->2082566072],
+Cell[46233, 891, 138, 2, 87, "Categorization",ExpressionUUID->"c7e87015-98b1-41ea-ab64-d388798d2e44",
+ CellID->1999493298],
+Cell[46374, 895, 166, 2, 87, "Categorization",ExpressionUUID->"87eaeedd-d599-4000-981a-3c62292e91ac",
+ CellID->1659751230],
+Cell[46543, 899, 163, 2, 87, "Categorization",ExpressionUUID->"e3509cbe-2170-47ed-98ae-cdac5f332b10",
+ CellID->1773831727],
+Cell[46709, 903, 179, 3, 87, "Categorization",ExpressionUUID->"4a666f69-48d0-48c7-a9f6-2333e321357f",
+ CellID->1421848035]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[46925, 911, 111, 1, 26, "KeywordsSection",ExpressionUUID->"6a1ca086-4bb4-41d0-9f2d-bcf044f1882b",
+ CellID->1949384076],
+Cell[47039, 914, 166, 2, 26, "Keywords",ExpressionUUID->"103f247a-7542-401d-aa7d-d48fdb95de15",
+ CellID->1287646700],
+Cell[47208, 918, 164, 2, 26, "Keywords",ExpressionUUID->"b95e58dc-d8e7-4cb3-ac22-fffaafb9c503",
+ CellID->92865427],
+Cell[47375, 922, 171, 2, 26, "Keywords",ExpressionUUID->"41a66381-4b6a-471b-9141-753064a3c54f",
+ CellID->1922881605],
+Cell[47549, 926, 172, 2, 26, "Keywords",ExpressionUUID->"386c3691-a32a-46aa-972f-7df0ddd85a3f",
+ CellID->888959340]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

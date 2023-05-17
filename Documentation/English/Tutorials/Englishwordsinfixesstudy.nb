@@ -1,0 +1,1142 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     39062,       1134]
+NotebookOptionsPosition[     33681,       1010]
+NotebookOutlinePosition[     34261,       1029]
+CellTagsIndexPosition[     34218,       1026]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["English words infixes study", "Title",
+ CellID->869098906,ExpressionUUID->"845ba1f3-96de-4f71-b219-4396cef7615b"],
+
+Cell["\<\
+In this tech note we show how to find most frequent prefixes (or infixes) in \
+a large collection of words. (For example, the English dictionary words \
+\"known\" in WL.)\
+\>", "Text",
+ CellChangeTimes->{{3.891032826063735*^9, 3.8910329265087433`*^9}},
+ CellID->335209418,ExpressionUUID->"d2528e51-6fa6-41ca-a618-5b2099f3f9fa"],
+
+Cell[CellGroupData[{
+
+Cell["Load the paclet", "MathCaption",
+ CellChangeTimes->{{3.891032073872528*^9, 3.891032079744759*^9}},
+ CellID->480149569,ExpressionUUID->"3dd70158-9bd9-40ba-94f3-f0a1183b1de5"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<AntonAntonov`JavaTriesWithFrequencies`\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.891032082318915*^9, 3.891032120075465*^9}, {
+  3.892215630289773*^9, 3.892215631886828*^9}},
+ CellLabel->"In[1]:=",
+ CellID->1777744404,ExpressionUUID->"523f3773-ae67-42ba-b3be-8c7cc2dd1a7e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Connect to Java's implementation", "MathCaption",
+ CellChangeTimes->{{3.8922156804393806`*^9, 3.892215690610921*^9}},
+ CellID->570868290,ExpressionUUID->"1d31a5dd-db02-4a84-8688-caeb9f12b7d5"],
+
+Cell[BoxData[
+ RowBox[{"JavaTrieInstall", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+    "$HomeDirectory", ",", "\"\<Downloads\>\"", ",", 
+     "\"\<Java-TriesWithFrequencies.jar\>\""}], "}"}], "]"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.8920305092766953`*^9, 3.8920305216270437`*^9}, 
+   3.892031118042994*^9},
+ CellLabel->"In[6]:=",
+ CellID->1555321691,ExpressionUUID->"55e7dc35-2dc0-4128-a7fe-25fe4b2946a6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Get all words from a dictionary (~93,000):", "Text",
+ CellChangeTimes->{{3.891032143689889*^9, 3.891032145724865*^9}},
+ CellID->1294706022,ExpressionUUID->"530b365e-9971-41ec-92bd-6987ad83b617"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"allWords", "=", 
+   RowBox[{"DictionaryLookup", "[", "\"\<*\>\"", "]"}]}], ";"}], "\n", 
+ RowBox[{"allWords", "//", "Length"}]}], "Input",
+ CellChangeTimes->{{3.891032156245549*^9, 3.891032156250759*^9}, {
+  3.892216122746936*^9, 3.892216135701221*^9}},
+ CellLabel->"In[7]:=",
+ CellID->1966180259,ExpressionUUID->"1f6d6239-292a-41a4-9ebb-a1f6c13b098d"],
+
+Cell[BoxData["92518"], "Output",
+ CellChangeTimes->{
+  3.891032157163288*^9, 3.8922157207903976`*^9, 3.892215794232182*^9, {
+   3.892216127319441*^9, 3.892216136104145*^9}, 3.892216240743108*^9},
+ CellLabel->"Out[8]=",
+ CellID->543194613,ExpressionUUID->"061e8cbf-e86a-4b1e-ad85-7b574c41bfa1"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Trie creation and shrinking:", "Text",
+ CellChangeTimes->{{3.891032168280418*^9, 3.89103216905761*^9}},
+ CellID->486182791,ExpressionUUID->"7413fdc0-8f1e-4806-a63c-f0c6a5470aa0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"tr", "=", 
+    RowBox[{"JavaTrieCreateBySplit", "[", "allWords", "]"}]}], ";", 
+   "\[IndentingNewLine]", 
+   RowBox[{"trShrunk", "=", 
+    RowBox[{"JavaTrieShrink", "[", "tr", "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.891032170766747*^9, 3.891032241441338*^9}, {
+  3.892215716127741*^9, 3.8922157322485*^9}, {3.89221579971516*^9, 
+  3.892215921620298*^9}, {3.89221613977593*^9, 3.892216155279944*^9}, {
+  3.89221618682798*^9, 3.892216198825642*^9}, {3.892216253067871*^9, 
+  3.89221625484623*^9}},
+ CellLabel->"In[11]:=",
+ CellID->695956516,ExpressionUUID->"96898f46-af44-497a-8739-70a57b97cc6a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.287149`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8910322491443644`*^9, 3.8910327070894327`*^9, {3.892215722308505*^9, 
+   3.892215745943431*^9}, {3.892215806955134*^9, 3.892215922022031*^9}, {
+   3.892216129571813*^9, 3.8922161557109413`*^9}, {3.892216192892289*^9, 
+   3.892216199471003*^9}, {3.892216242350368*^9, 3.8922162554542294`*^9}},
+ CellLabel->"Out[11]=",
+ CellID->505480311,ExpressionUUID->"dd83a5ac-52ce-4fa0-a8f2-f620f8b474cd"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Here are the node statistics of the original and shrunk tries:\
+\>", "Text",
+ CellChangeTimes->{{3.891032258416315*^9, 3.891032265311234*^9}},
+ CellID->1477464881,ExpressionUUID->"3faee7c7-e7c2-4628-a42b-938f8e5a6b59"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"JavaTrieNodeCounts", "[", "tr", "]"}]], "Input",
+ CellChangeTimes->{{3.891032266201911*^9, 3.891032281380929*^9}, {
+  3.892215724474918*^9, 3.89221572661122*^9}},
+ CellLabel->"In[13]:=",
+ CellID->369557956,ExpressionUUID->"ee06c883-f8e0-4d48-b7a1-e613e62a5f58"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"total\"\>", "\[Rule]", "224937"}], ",", 
+   RowBox[{"\<\"internal\"\>", "\[Rule]", "160090"}], ",", 
+   RowBox[{"\<\"leaves\"\>", "\[Rule]", "64847"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.8910322751284733`*^9, 3.8910322820480947`*^9}, 
+   3.891032707310626*^9, {3.892215727114856*^9, 3.892215748023966*^9}, 
+   3.8922158084496813`*^9, 3.8922162612740192`*^9},
+ CellLabel->"Out[13]=",
+ CellID->389440975,ExpressionUUID->"c5f42efe-7c1d-4858-b01d-a713a1723aa8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"JavaTrieNodeCounts", "[", "trShrunk", "]"}]], "Input",
+ CellChangeTimes->{{3.8910322771257553`*^9, 3.891032288738172*^9}, {
+  3.892215761465135*^9, 3.89221576194676*^9}},
+ CellLabel->"In[14]:=",
+ CellID->111941665,ExpressionUUID->"c402042d-5988-4179-99fd-444713cf82c4"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"total\"\>", "\[Rule]", "115504"}], ",", 
+   RowBox[{"\<\"internal\"\>", "\[Rule]", "50657"}], ",", 
+   RowBox[{"\<\"leaves\"\>", "\[Rule]", "64847"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.89103228922936*^9, 3.8910327074341917`*^9, 
+  3.8922162638220387`*^9},
+ CellLabel->"Out[14]=",
+ CellID->839285744,ExpressionUUID->"ca5f809e-2661-451d-9b62-e6e60f626e70"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Find the infixes that have more than three characters and appear more than ",
+ Cell[BoxData[
+ "10"], "InlineFormula",ExpressionUUID->
+  "e2352d8c-261e-490e-a939-5edd15acf33e"],
+ " times:"
+}], "Text",
+ CellChangeTimes->{{3.891032296915079*^9, 3.891032302549313*^9}},
+ CellID->373351287,ExpressionUUID->"d2e9ffd1-4756-4de1-b8cf-5e7a36bb99ed"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Multicolumn", "[", 
+    RowBox[{"#", ",", "5"}], "]"}], "&"}], "@", "\[IndentingNewLine]", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"ReverseSortBy", "[", 
+     RowBox[{
+      RowBox[{"Tally", "[", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Rest", "/@", 
+         RowBox[{"JavaTrieGetWords", "[", "trShrunk", "]"}]}], "]"}], "]"}], 
+      ",", 
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "&"}]}], "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringLength", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}], ">", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ">", "10"}]}], "&"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.8910323184096107`*^9, 3.891032343774765*^9}, {
+  3.891032693811729*^9, 3.891032696799933*^9}, {3.89103273898921*^9, 
+  3.89103277046517*^9}, {3.8910329790695877`*^9, 3.8910329950203047`*^9}, {
+  3.892216268142394*^9, 3.89221629363872*^9}},
+ CellLabel->"In[17]:=",
+ CellID->1339034494,ExpressionUUID->"9de4301b-2594-425f-97a4-3c72c3d6d419"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ness\"\>", ",", "1381"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"uous\"\>", ",", "27"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"unch\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"sect\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ming\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ment\"\>", ",", "670"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tial\"\>", ",", "27"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"torm\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"scat\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"minded\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ation\"\>", ",", "401"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pect\"\>", ",", "27"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tand\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pula\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"llat\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"able\"\>", ",", "349"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ograph\"\>", ",", "27"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tain\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pipe\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"itude\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"less\"\>", ",", "314"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ject\"\>", ",", "27"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"soph\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"opriat\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"istress\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"tion\"\>", ",", "279"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"oint\"\>", ",", "26"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rous\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"onal\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ington\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ally\"\>", ",", "242"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"light\"\>", ",", "26"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"piece\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"nger\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"inen\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ility\"\>", ",", "217"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rian\"\>", ",", "25"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pher\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"nent\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ield\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"olog\"\>", ",", "126"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"keep\"\>", ",", "25"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"otia\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mine\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hion\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"graph\"\>", ",", "110"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hearted\"\>", ",", "25"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"nist\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"liat\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hift\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"cation\"\>", ",", "90"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"grat\"\>", ",", "25"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"neck\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"keeper\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"helm\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"house\"\>", ",", "87"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"quen\"\>", ",", "24"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ient\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"fire\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"heet\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"board\"\>", ",", "84"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mark\"\>", ",", "24"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hang\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"drop\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"grin\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ster\"\>", ",", "82"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hold\"\>", ",", "24"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"eous\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"dress\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"grand\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ulat\"\>", ",", "78"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"etic\"\>", ",", "24"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ctic\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"coat\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"front\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ress\"\>", ",", "75"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ware\"\>", ",", "23"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"boat\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"bone\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"folk\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ance\"\>", ",", "72"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ciat\"\>", ",", "23"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ying\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"bird\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"eria\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"head\"\>", ",", "70"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"cast\"\>", ",", "23"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"worth\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"throp\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"erat\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"nder\"\>", ",", "60"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"band\"\>", ",", "23"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"trap\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"termin\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ement\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"back\"\>", ",", "60"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tick\"\>", ",", "22"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"sess\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"teri\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ella\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"work\"\>", ",", "58"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rect\"\>", ",", "22"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"quil\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"struct\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"culat\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"room\"\>", ",", "58"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"nish\"\>", ",", "22"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"phone\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"sthe\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"cord\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ious\"\>", ",", "58"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"master\"\>", ",", "22"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"lect\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rson\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"boli\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ther\"\>", ",", "57"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"holder\"\>", ",", "22"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"itut\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ront\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"aper\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"land\"\>", ",", "57"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"harg\"\>", ",", "22"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hand\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ricat\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"aint\"\>", ",", "12"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"minat\"\>", ",", "51"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ture\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"gest\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pole\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"uman\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"meter\"\>", ",", "51"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tude\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"dict\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"path\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ulous\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ward\"\>", ",", "47"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tter\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"cter\"\>", ",", "17"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ntic\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ulen\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"book\"\>", ",", "47"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ting\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"scen\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mouth\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ughter\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ilit\"\>", ",", "44"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"terat\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"round\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mish\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ucin\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ight\"\>", ",", "41"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ring\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"riat\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mera\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"town\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"over\"\>", ",", "40"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ption\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"reak\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"iminat\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"stimat\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"tive\"\>", ",", "39"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mate\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"oard\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hous\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"sona\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"down\"\>", ",", "39"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"iness\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"monger\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"horse\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"slat\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"tone\"\>", ",", "37"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"fold\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mania\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hiev\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"sive\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"atic\"\>", ",", "37"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"cake\"\>", ",", "21"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"itis\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"herap\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rick\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"yard\"\>", ",", "36"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"worm\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ford\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"guish\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ranchis\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"wood\"\>", ",", "36"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tious\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"fall\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"grad\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"quish\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ular\"\>", ",", "36"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"time\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"duct\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"escen\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pulat\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"line\"\>", ",", "36"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"some\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"berr\"\>", ",", "16"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"entic\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"point\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"hood\"\>", ",", "36"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ship\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ught\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ding\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pass\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"proof\"\>", ",", "34"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rtion\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"scop\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"diat\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"orat\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ling\"\>", ",", "34"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"onic\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"rush\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"creen\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mail\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"jack\"\>", ",", "34"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ogat\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ract\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"comb\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"llow\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ction\"\>", ",", "34"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mina\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"post\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"bert\"\>", ",", "13"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"lion\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"tail\"\>", ",", "33"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"like\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"nect\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"wheel\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"iorat\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"raph\"\>", ",", "33"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"guard\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"mith\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"uriz\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"iograph\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"hole\"\>", ",", "33"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"field\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"metr\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tment\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"imina\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ssion\"\>", ",", "31"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ette\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ition\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tend\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hibit\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"sion\"\>", ",", "31"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"cock\"\>", ",", "20"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"itat\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"stat\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"headed\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ical\"\>", ",", "31"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"word\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"horn\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"roll\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"gula\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"gram\"\>", ",", "31"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tional\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"hani\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"port\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ganiz\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"quet\"\>", ",", "30"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"read\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"form\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"poon\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"foot\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"fish\"\>", ",", "30"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"most\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"dera\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"pick\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ember\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"borat\"\>", ",", "30"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"geli\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"cloth\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ouse\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"child\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"stic\"\>", ",", "29"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ative\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"case\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ount\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"chen\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"icat\"\>", ",", "29"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"arian\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"away\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"otom\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"card\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"maker\"\>", ",", "28"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"arch\"\>", ",", "19"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ache\"\>", ",", "15"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ophon\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"beat\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"lock\"\>", ",", "28"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"well\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"walk\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ocat\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"atur\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"load\"\>", ",", "28"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"weight\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"tero\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"nerat\"\>", ",", "12"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ated\"\>", ",", "11"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"\<\"ball\"\>", ",", "28"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"ution\"\>", ",", "18"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"stal\"\>", ",", "14"}], "}"}], 
+     RowBox[{"{", 
+      RowBox[{"\<\"more\"\>", ",", "12"}], "}"}], ""}
+   },
+   AutoDelete->False,
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.891032711533114*^9, {3.891032759595148*^9, 3.8910327748998623`*^9}, 
+   3.8910329995625143`*^9, {3.892216269596908*^9, 3.892216301949986*^9}},
+ CellLabel->"Out[17]=",
+ CellID->1634958469,ExpressionUUID->"b56aa429-a584-4295-900b-8e5180ca27e3"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "TutorialMoreAboutSection",
+ CellChangeTimes->{{3.843042384656711*^9, 3.843042386024461*^9}},
+ CellID->1041958536,ExpressionUUID->"2d195716-6332-4bb7-b363-13f8165246d0"],
+
+Cell["XXXX", "TutorialMoreAbout",
+ CellID->1615456914,ExpressionUUID->"f227f306-a5b6-436e-9396-0f7f53a1f599"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Tech Notes", "RelatedTutorialsSection",
+ CellID->348604577,ExpressionUUID->"41099270-f3ca-41a8-a24c-77bffaceef80"],
+
+Cell["XXXX", "RelatedTutorials",
+ CellID->661736623,ExpressionUUID->"44b4d812-4119-4b13-8e6b-bdb628f6311a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->2137098595,ExpressionUUID->"2e85718c-b22b-4977-8a74-9cccc3e3f83c"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["1.0.4", "HistoryData",
+  CellTags->"New",ExpressionUUID->"f4f13113-368f-45ad-bd04-08a18657908d"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"f27045c4-0916-4d7b-b8c2-7f76aa9d8766"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "41f7722a-4dd6-49a3-a917-a86b496b416b"]
+}], "History",
+ CellChangeTimes->{{3.8922163114770927`*^9, 3.892216314379738*^9}},
+ CellID->1552090090,ExpressionUUID->"28df73b7-c146-4a84-a257-e38a3f359819"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->494282521,ExpressionUUID->"d0fa430b-5677-4a1f-8813-b191e8418d7e"],
+
+Cell["Tech Note", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->939583851,ExpressionUUID->"e8fe9eff-d881-4ae4-9472-7d59fbfce12a"],
+
+Cell["AntonAntonov/JavaTriesWithFrequencies", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->1138527366,ExpressionUUID->"17b69699-be3c-4fc7-87d6-0c14cc03e204"],
+
+Cell["AntonAntonov`JavaTriesWithFrequencies`", "Categorization",
+ CellLabel->"Context",
+ CellID->1150145592,ExpressionUUID->"25aaea04-abd0-4c1e-bb02-74cd6354e22f"],
+
+Cell["\<\
+AntonAntonov/JavaTriesWithFrequencies/tutorial/Englishwordsinfixesstudy\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->996658097,ExpressionUUID->"fc163df6-2165-4596-9843-233c7cdb7149"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->460189679,ExpressionUUID->"012d5239-c70a-4a59-94fc-968c52869e0f"],
+
+Cell["Trie", "Keywords",
+ CellChangeTimes->{{3.892216320048379*^9, 3.8922163214925327`*^9}},
+ CellID->1319322106,ExpressionUUID->"36c29a2e-977a-441a-a623-4a764574043e"],
+
+Cell["Java", "Keywords",
+ CellChangeTimes->{{3.892216320048379*^9, 3.892216323740399*^9}},
+ CellID->1593120443,ExpressionUUID->"342ce7f3-8983-4b27-9c14-bb99b9ed5087"],
+
+Cell["Infix", "Keywords",
+ CellChangeTimes->{{3.892216320048379*^9, 3.892216325675425*^9}},
+ CellID->966806167,ExpressionUUID->"7957eca0-94fb-46c4-b41c-b27eeab17562"],
+
+Cell["Prefix", "Keywords",
+ CellChangeTimes->{{3.892216320048379*^9, 3.892216336139679*^9}},
+ CellID->1775968308,ExpressionUUID->"4b8d69e4-71ad-4d37-a057-028a1db4f326"],
+
+Cell["Dictionary words", "Keywords",
+ CellChangeTimes->{{3.892216320048379*^9, 3.892216339950386*^9}},
+ CellID->1082609748,ExpressionUUID->"c7856e27-3499-4ef7-8d89-2c6bfd3adb9a"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1480, 1332},
+WindowMargins->{{Automatic, 930}, {Automatic, 10}},
+TaggingRules-><|"Paclet" -> "AntonAntonov/JavaTriesWithFrequencies"|>,
+Magnification:>1.25 Inherited,
+FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (January 30, 2023)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TechNotePageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"63568a89-5776-467a-88e0-0afb22ecb59b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 119, 1, 141, "Title",ExpressionUUID->"845ba1f3-96de-4f71-b219-4396cef7615b",
+ CellID->869098906],
+Cell[702, 25, 337, 6, 55, "Text",ExpressionUUID->"d2528e51-6fa6-41ca-a618-5b2099f3f9fa",
+ CellID->335209418],
+Cell[CellGroupData[{
+Cell[1064, 35, 179, 2, 47, "MathCaption",ExpressionUUID->"3dd70158-9bd9-40ba-94f3-f0a1183b1de5",
+ CellID->480149569],
+Cell[1246, 39, 320, 6, 33, "Input",ExpressionUUID->"523f3773-ae67-42ba-b3be-8c7cc2dd1a7e",
+ CellID->1777744404]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1603, 50, 198, 2, 52, "MathCaption",ExpressionUUID->"1d31a5dd-db02-4a84-8688-caeb9f12b7d5",
+ CellID->570868290],
+Cell[1804, 54, 439, 11, 64, "Input",ExpressionUUID->"55e7dc35-2dc0-4128-a7fe-25fe4b2946a6",
+ CellID->1555321691]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2280, 70, 200, 2, 31, "Text",ExpressionUUID->"530b365e-9971-41ec-92bd-6987ad83b617",
+ CellID->1294706022],
+Cell[CellGroupData[{
+Cell[2505, 76, 388, 8, 58, "Input",ExpressionUUID->"1f6d6239-292a-41a4-9ebb-a1f6c13b098d",
+ CellID->1966180259],
+Cell[2896, 86, 293, 5, 32, "Output",ExpressionUUID->"061e8cbf-e86a-4b1e-ad85-7b574c41bfa1",
+ CellID->543194613]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3238, 97, 184, 2, 31, "Text",ExpressionUUID->"7413fdc0-8f1e-4806-a63c-f0c6a5470aa0",
+ CellID->486182791],
+Cell[CellGroupData[{
+Cell[3447, 103, 729, 15, 106, "Input",ExpressionUUID->"96898f46-af44-497a-8739-70a57b97cc6a",
+ CellID->695956516],
+Cell[4179, 120, 500, 9, 32, "Output",ExpressionUUID->"dd83a5ac-52ce-4fa0-a8f2-f620f8b474cd",
+ CellID->505480311]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4728, 135, 228, 4, 31, "Text",ExpressionUUID->"3faee7c7-e7c2-4628-a42b-938f8e5a6b59",
+ CellID->1477464881],
+Cell[CellGroupData[{
+Cell[4981, 143, 285, 5, 33, "Input",ExpressionUUID->"ee06c883-f8e0-4d48-b7a1-e613e62a5f58",
+ CellID->369557956],
+Cell[5269, 150, 558, 11, 32, "Output",ExpressionUUID->"c5f42efe-7c1d-4858-b01d-a713a1723aa8",
+ CellID->389440975]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5864, 166, 293, 5, 33, "Input",ExpressionUUID->"c402042d-5988-4179-99fd-444713cf82c4",
+ CellID->111941665],
+Cell[6160, 173, 455, 10, 32, "Output",ExpressionUUID->"ca5f809e-2661-451d-9b62-e6e60f626e70",
+ CellID->839285744]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6664, 189, 358, 8, 34, "Text",ExpressionUUID->"d2e9ffd1-4756-4de1-b8cf-5e7a36bb99ed",
+ CellID->373351287],
+Cell[CellGroupData[{
+Cell[7047, 201, 1173, 32, 82, "Input",ExpressionUUID->"9de4301b-2594-425f-97a4-3c72c3d6d419",
+ CellID->1339034494],
+Cell[8223, 235, 22259, 680, 1290, "Output",ExpressionUUID->"b56aa429-a584-4295-900b-8e5180ca27e3",
+ CellID->1634958469]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30531, 921, 192, 2, 93, "TutorialMoreAboutSection",ExpressionUUID->"2d195716-6332-4bb7-b363-13f8165246d0",
+ CellID->1041958536],
+Cell[30726, 925, 109, 1, 30, "TutorialMoreAbout",ExpressionUUID->"f227f306-a5b6-436e-9396-0f7f53a1f599",
+ CellID->1615456914]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30872, 931, 128, 1, 93, "RelatedTutorialsSection",ExpressionUUID->"41099270-f3ca-41a8-a24c-77bffaceef80",
+ CellID->348604577],
+Cell[31003, 934, 107, 1, 30, "RelatedTutorials",ExpressionUUID->"44b4d812-4119-4b13-8e6b-bdb628f6311a",
+ CellID->661736623]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31159, 941, 111, 1, 90, "MetadataSection",ExpressionUUID->"2e85718c-b22b-4977-8a74-9cccc3e3f83c",
+ CellID->2137098595],
+Cell[31273, 944, 548, 13, 33, "History",ExpressionUUID->"28df73b7-c146-4a84-a257-e38a3f359819",
+ CellID->1552090090],
+Cell[CellGroupData[{
+Cell[31846, 961, 122, 1, 27, "CategorizationSection",ExpressionUUID->"d0fa430b-5677-4a1f-8813-b191e8418d7e",
+ CellID->494282521],
+Cell[31971, 964, 137, 2, 87, "Categorization",ExpressionUUID->"e8fe9eff-d881-4ae4-9472-7d59fbfce12a",
+ CellID->939583851],
+Cell[32111, 968, 166, 2, 87, "Categorization",ExpressionUUID->"17b69699-be3c-4fc7-87d6-0c14cc03e204",
+ CellID->1138527366],
+Cell[32280, 972, 163, 2, 87, "Categorization",ExpressionUUID->"25aaea04-abd0-4c1e-bb02-74cd6354e22f",
+ CellID->1150145592],
+Cell[32446, 976, 199, 4, 87, "Categorization",ExpressionUUID->"fc163df6-2165-4596-9843-233c7cdb7149",
+ CellID->996658097]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32682, 985, 110, 1, 26, "KeywordsSection",ExpressionUUID->"012d5239-c70a-4a59-94fc-968c52869e0f",
+ CellID->460189679],
+Cell[32795, 988, 168, 2, 26, "Keywords",ExpressionUUID->"36c29a2e-977a-441a-a623-4a764574043e",
+ CellID->1319322106],
+Cell[32966, 992, 166, 2, 26, "Keywords",ExpressionUUID->"342ce7f3-8983-4b27-9c14-bb99b9ed5087",
+ CellID->1593120443],
+Cell[33135, 996, 166, 2, 26, "Keywords",ExpressionUUID->"7957eca0-94fb-46c4-b41c-b27eeab17562",
+ CellID->966806167],
+Cell[33304, 1000, 168, 2, 26, "Keywords",ExpressionUUID->"4b8d69e4-71ad-4d37-a057-028a1db4f326",
+ CellID->1775968308],
+Cell[33475, 1004, 178, 2, 26, "Keywords",ExpressionUUID->"c7856e27-3499-4ef7-8d89-2c6bfd3adb9a",
+ CellID->1082609748]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
